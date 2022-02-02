@@ -1,107 +1,318 @@
 import { useState } from "react";
 import "./App.css";
 
-export default function App() {
+export default function App() { 
 
-      const names = ["Mankatha", "Vishuvasam", "Thupakki", "Hangover","Avengers"];
-      const users = [
-        {
-          name: "Mankatha",
- profile:"https://moviegalleri.net/wp-content/uploads/2011/05/vilayadu_mankatha_posters.jpg",
-       
-             summary: "Inspector Vinayak is suspended after he lets a smuggler escape. He then meets a group of men who plan to whisk away 500 crore belonging to a gangster. He promises to help them for a share in the loot.",
-             Ratings: "⭐⭐⭐⭐⭐"
-            },
-        {
-          name: "Vishuvasam",
-          profile:"https://moviegalleri.net/wp-content/uploads/2018/08/Ajith-Viswasam-Movie-First-Look-Poster-HD.jpg",
-         
-           summary:"Thookku Durai, a chieftain, gets separated from his wife, Niranjana, after their daughter, Swetha, gets injured during a fight. Years later, he tries to protect Swetha without revealing his identity.",
-          Ratings: "⭐⭐⭐⭐⭐"
-         },
-        {
-          name: "Vikram Vedha",
-          profile:"https://upload.wikimedia.org/wikipedia/en/thumb/0/03/Vikram_Vedha_poster.jpg/220px-Vikram_Vedha_poster.jpg"
-            ,
-          summary:"Vikram, a pragmatic policeman, and his partner Simon are on the hunt to capture Vedha. When Vedha voluntarily surrenders, he offers to tell Vikram a story, throwing Vikram's life into disarray.",
-          Ratings: "⭐⭐⭐"
-        },
-        {
-          name: "Veeram",
-          profile: "https://cdn.cinematerial.com/p/297x/oc38igjo/veeram-indian-movie-poster-md.jpg?v=1456468953"
-        ,
-        summary:"Vinayagam, an honest man, uses violence to settle disputes; he decides to mend his ways for his lover's sake; hell breaks loose when he learns about a gang of rowdies following his lover's family.",
-         Ratings: "⭐⭐⭐⭐"  
-        },
-        {
-          name: "Avengers",
-          profile: "https://m.media-amazon.com/images/I/81OmkfFqvsL._AC_SL1440_.jpg"
-        ,
-        summary: "When Thor's evil brother, Loki (Tom Hiddleston), gains access to the unlimited power of the energy cube called the Tesseract, Nick Fury (Samuel L. Jackson), director of S.H.I.E.L.D., initiates a superhero recruitment effort to defeat the unprecedented threat to Earth. Joining Fury's are Iron Man (Robert Downey Jr.), Captain America (Chris Evans), the Hulk (Mark Ruffalo), Thor (Chris Hemsworth), the Black Widow (Scarlett Johansson) and Hawkeye (Jeremy Renner).",
-        Ratings: "⭐⭐⭐⭐⭐"
-        }
-        ];
-         
-  return (
-    <div className="App">
-      <Counter />
-      <Counter2 />
-      {users.map((usr) => (
-            <Welcome name={usr.name} profile={usr.profile} summary={usr.summary} Ratings={usr.Ratings} />
-          ))}
+const INITIAL_MOVIE_LIST = [
+  {
+    name: "RRR",
+    poster:
+      "https://englishtribuneimages.blob.core.windows.net/gallary-content/2021/6/Desk/2021_6$largeimg_977224513.JPG",
+    rating: 8.8,
+    summary:
+      "RRR is an upcoming Indian Telugu-language period action drama film directed by S. S. Rajamouli, and produced by D. V. V. Danayya of DVV Entertainments."
+  },
+  {
+    name: "Iron man 2",
+    poster:
+      "https://m.media-amazon.com/images/M/MV5BMTM0MDgwNjMyMl5BMl5BanBnXkFtZTcwNTg3NzAzMw@@._V1_FMjpg_UX1000_.jpg",
+    rating: 7,
+    summary:
+      "With the world now aware that he is Iron Man, billionaire inventor Tony Stark (Robert Downey Jr.) faces pressure from all sides to share his technology with the military. He is reluctant to divulge the secrets of his armored suit, fearing the information will fall into the wrong hands. With Pepper Potts (Gwyneth Paltrow) and Rhodes (Don Cheadle) by his side, Tony must forge new alliances and confront a powerful new enemy."
+  },
+  {
+    name: "No Country for Old Men",
+    poster:
+      "https://upload.wikimedia.org/wikipedia/en/8/8b/No_Country_for_Old_Men_poster.jpg",
+    rating: 8.1,
+    summary:
+      "A hunter's life takes a drastic turn when he discovers two million dollars while strolling through the aftermath of a drug deal. He is then pursued by a psychopathic killer who wants the money."
+  },
+  {
+    name: "Jai Bhim",
+    poster:
+      "https://m.media-amazon.com/images/M/MV5BY2Y5ZWMwZDgtZDQxYy00Mjk0LThhY2YtMmU1MTRmMjVhMjRiXkEyXkFqcGdeQXVyMTI1NDEyNTM5._V1_FMjpg_UX1000_.jpg",
+    summary:
+      "A tribal woman and a righteous lawyer battle in court to unravel the mystery around the disappearance of her husband, who was picked up the police on a false case",
+    rating: 8.8
+  },
+  {
+    name: "The Avengers",
+    rating: 8,
+    summary:
+      "Marvel's The Avengers (classified under the name Marvel Avengers\n Assemble in the United Kingdom and Ireland), or simply The Avengers, is\n a 2012 American superhero film based on the Marvel Comics superhero team\n of the same name.",
+    poster:
+      "https://terrigen-cdn-dev.marvel.com/content/prod/1x/avengersendgame_lob_crd_05.jpg"
+  },
+  {
+    name: "Interstellar",
+    poster: "https://m.media-amazon.com/images/I/A1JVqNMI7UL._SL1500_.jpg",
+    rating: 8.6,
+    summary:
+      "When Earth becomes uninhabitable in the future, a farmer and ex-NASA\n pilot, Joseph Cooper, is tasked to pilot a spacecraft, along with a team\n of researchers, to find a new planet for humans."
+  },
+  {
+    name: "Baahubali",
+    poster: "https://flxt.tmsimg.com/assets/p11546593_p_v10_af.jpg",
+    rating: 8,
+    summary:
+      "In the kingdom of Mahishmati, Shivudu falls in love with a young warrior woman. While trying to woo her, he learns about the conflict-ridden past of his family and his true legacy."
+  },
+  {
+    name: "Ratatouille",
+    poster:
+      "https://resizing.flixster.com/gL_JpWcD7sNHNYSwI1ff069Yyug=/ems.ZW1zLXByZC1hc3NldHMvbW92aWVzLzc4ZmJhZjZiLTEzNWMtNDIwOC1hYzU1LTgwZjE3ZjQzNTdiNy5qcGc=",
+    rating: 8,
+    summary:
+      "Remy, a rat, aspires to become a renowned French chef. However, he fails to realise that people despise rodents and will never enjoy a meal cooked by him."
+  }
+];
+const [movieList, setMovieList] = useState(INITIAL_MOVIE_LIST);
+
+const [name, setName] = useState("");
+const [poster, setPoster] = useState("");
+const [rating, setRating] = useState("");
+const [summary, setSummary] = useState("");
+
+return(
+  <div className = "App"> 
+  <div className = "add-movie-form">
+       <input
+        type = "text" 
+        placeholder = "Name"
+        onChange = {(event) => setName(event.target.value)} 
+        />
+       <input
+        type = "text" 
+        placeholder = "Poster"
+        onChange = {(event) => setPoster(event.target.value)}
+        />
+       <input 
+       type = "text"
+        placeholder = "Rating" 
+        onChange = {(event) => setRating(event.target.value)}
+        />
+       <input 
+       type = "text"
+        placeholder = "Summary"
+         onChange = {(event) => setSummary(event.target.value)}
+         />
+       {/* <button onClick = {() => console.log(name, poster, rating, summary)}>Add Movie</button> */}
+  <button
+    onClick = {() => {
+      const newMovie = {
+        name: name,
+        poster: poster,
+        rating: rating,
+        summary: summary,
+      };
+
+      setMovieList([...movieList, newMovie])
+    } }>
+       Add Movie
+  </button>
+  </div>
+
+<div className="movie-list">
+  {movieList.map(({ name, poster, rating, summary }) => 
+  (
+    <Movie 
+    name = {name} 
+    poster={poster} 
+    rating = {rating} 
+    summary={summary}
+    />
+  ))}
+</div>
+{/* <ColorBox />
+<AddColor /> */}
+</div>
+);
+}
+
+
+// function AddColor() {
+//   const [color, setColor] = useState("pink");
+//   const styles = {
+//     background: color,
+//   };
+// const [colorList, setColorList] = useState(
+//   ["crimson", "Orange", "teal", "yellow"]);
+    
+//   // Todo - Capture - Typing event
+//   return(
+//     <div>
+//       <input 
+//       value = {color}
+//       style={styles}
+//       onChange = {(event) => setColor(event.target.value)}
+//       placeholder = "Enter a color" 
+//       />
+//    <button onClick = {()=> setColorList([...colorList, color])}>
+//      Add Color</button>
+
+// {colorList.map((clr) => (
+//   <ColorBox color = {clr} />
+// ))}
+
+//    {/* <ColorBox color = "red" />
+//    <ColorBox color = "Orange" />
+//    <ColorBox color = "teal" /> */}
+//     </div>
+//   );
+// }
+
+// function ColorBox({ color }){
+//   const styles = {
+//     backgroundColor: color,
+//     height: "25px",
+//     width: "200px",
+//     marginTop: "10px",
+//   };
+//   return <div style = {styles}></div>
+// }
+
+
+
+// Task
+function Movie({ name, poster, rating, summary }){
+const styles = {
+  // backgroundColor: "green",
+  color: rating > 8.5 ? "green" : "red",
+};
+
+  return(
+    <div className = "movie-container">
+        <img src={poster} alt={name} className="movie-poster"  />
+        <div className="movie-specs">
+          <h2 className="movie-name">{name}</h2>
+          <p style={styles} className="movie-rating">⭐{rating}</p>
+        </div>
+        <p className="movie-summary">{summary}</p>
+        <Counter />
     </div>
   );
+  
 }
+
+function Counter(){
+  const [like, setLike] = useState(0);
+  const [disLike, setDisLike] = useState(0);
+  return(
+    <div className = "counter-container">
+      <button className="like-dislike" onClick = {() =>setLike(like + 1)} >👍 {like} </button>
+      <button className="like-dislike" onClick = {() => setDisLike(disLike + 1)}> 👎 {disLike} </button>
+    </div>
+  )
+}
+
+
+
+
+
+// Movie Task my try
+
+// export default function App() {
+
+//       const names = ["Mankatha", "Vishuvasam", "Thupakki", "Hangover","Avengers"];
+//       const users = [
+//         {
+//           name: "Mankatha",
+//           profile:"https://moviegalleri.net/wp-content/uploads/2011/05/vilayadu_mankatha_posters.jpg",
+       
+//              summary: "Inspector Vinayak is suspended after he lets a smuggler escape. He then meets a group of men who plan to whisk away 500 crore belonging to a gangster. He promises to help them for a share in the loot.",
+//              Ratings: "⭐⭐⭐⭐⭐"
+//             },
+//         {
+//           name: "Vishuvasam",
+//           profile:"https://moviegalleri.net/wp-content/uploads/2018/08/Ajith-Viswasam-Movie-First-Look-Poster-HD.jpg",
+         
+//            summary:"Thookku Durai, a chieftain, gets separated from his wife, Niranjana, after their daughter, Swetha, gets injured during a fight. Years later, he tries to protect Swetha without revealing his identity.",
+//           Ratings: "⭐⭐⭐⭐⭐"
+//          },
+//         {
+//           name: "Vikram Vedha",
+//           profile:"https://upload.wikimedia.org/wikipedia/en/thumb/0/03/Vikram_Vedha_poster.jpg/220px-Vikram_Vedha_poster.jpg"
+//             ,
+//           summary:"Vikram, a pragmatic policeman, and his partner Simon are on the hunt to capture Vedha. When Vedha voluntarily surrenders, he offers to tell Vikram a story, throwing Vikram's life into disarray.",
+//           Ratings: "⭐⭐⭐"
+//         },
+//         {
+//           name: "Veeram",
+//           profile: "https://cdn.cinematerial.com/p/297x/oc38igjo/veeram-indian-movie-poster-md.jpg?v=1456468953"
+//         ,
+//         summary:"Vinayagam, an honest man, uses violence to settle disputes; he decides to mend his ways for his lover's sake; hell breaks loose when he learns about a gang of rowdies following his lover's family.",
+//          Ratings: "⭐⭐⭐⭐"  
+//         },
+//         {
+//           name: "Avengers",
+//           profile: "https://m.media-amazon.com/images/I/81OmkfFqvsL._AC_SL1440_.jpg"
+//         ,
+//         summary: "When Thor's evil brother, Loki (Tom Hiddleston), gains access to the unlimited power of the energy cube called the Tesseract, Nick Fury (Samuel L. Jackson), director of S.H.I.E.L.D., initiates a superhero recruitment effort to defeat the unprecedented threat to Earth. Joining Fury's are Iron Man (Robert Downey Jr.), Captain America (Chris Evans), the Hulk (Mark Ruffalo), Thor (Chris Hemsworth), the Black Widow (Scarlett Johansson) and Hawkeye (Jeremy Renner).",
+//         Ratings: "⭐⭐⭐⭐⭐"
+//         }
+//         ];
+         
+//   return (
+//     <div className="App">
+//       <Counter />
+//       <Counter2 />
+//       {users.map((usr) => (
+//             <Welcome name={usr.name} profile={usr.profile} summary={usr.summary} Ratings={usr.Ratings} />
+//           ))}
+//     </div>
+//   );
+// }
 
   
-// Task - 1  Likes and Dislikes
-function Counter(){
-  const [like,setLike] = useState(0);
-  return(
-    <h1 className = "Good"> Likes
-    {/* <h4>Likes</h4>   */}
-      <button className = "Good2" onClick = {() => setLike(like + 1)}> 👍 {like}</button>
-    </h1>
-  )
-}
+// // Task - 1  Likes and Dislikes
+// function Counter(){
+//   const [like,setLike] = useState(0);
+//   return(
+//     <h1 className = "Good"> Likes
+//     {/* <h4>Likes</h4>   */}
+//       <button className = "Good2" onClick = {() => setLike(like + 1)}> 👍 {like}</button>
+//     </h1>
+//   )
+// }
 
-function Counter2(){
-  const [disLike,setDislike] = useState(0);
-  return(
-    <h1 className = "Good"> Dislikes
-      <button className = "Good2" onClick = {() => setDislike(disLike + 1)}> 👎 {disLike}</button>
-    </h1>
-  )
-}
+// function Counter2(){
+//   const [disLike,setDislike] = useState(0);
+//   return(
+//     <h1 className = "Good"> Dislikes
+//       <button className = "Good2" onClick = {() => setDislike(disLike + 1)}> 👎 {disLike}</button>
+//     </h1>
+//   )
+// }
 
-function Welcome({ name, profile, summary, Ratings }) {
-    return (
-      <div className="come">
-        <h1>------------------------------------------------------------------</h1>
-        <img className="user-profile-pic" src={profile} alt="profile pic" />
-        <h1> {name}🎄😀</h1>
-        <h4>{summary}</h4>
-         <h4>{Ratings} </h4>  
+// function Welcome({ name, profile, summary, Ratings }) {
+//     return (
+//       <div className="come">
+//         <h1>------------------------------------------------------------------</h1>
+//         <img className="user-profile-pic" src={profile} alt="profile pic" />
+//         <h1> {name}🎄😀</h1>
+//         <h4>{summary}</h4>
+//          <h4>{Ratings} </h4>  
 
-         <div class="star-rating">
-  <input type="radio" id="5-stars" name="rating" value="5" />
-  <label for="5-stars" class="star">&#9733;</label>
-  <input type="radio" id="4-stars" name="rating" value="4" />
-  <label for="4-stars" class="star">&#9733;</label>
-  <input type="radio" id="3-stars" name="rating" value="3" />
-  <label for="3-stars" class="star">&#9733;</label>
-  <input type="radio" id="2-stars" name="rating" value="2" />
-  <label for="2-stars" class="star">&#9733;</label>
-  <input type="radio" id="1-star" name="rating" value="1" />
-  <label for="1-star" class="star">&#9733;</label>
-</div>
-
-
+//          <div class="star-rating">
+//   <input type="radio" id="5-stars" name="rating" value="5" />
+//   <label for="5-stars" class="star">&#9733;</label>
+//   <input type="radio" id="4-stars" name="rating" value="4" />
+//   <label for="4-stars" class="star">&#9733;</label>
+//   <input type="radio" id="3-stars" name="rating" value="3" />
+//   <label for="3-stars" class="star">&#9733;</label>
+//   <input type="radio" id="2-stars" name="rating" value="2" />
+//   <label for="2-stars" class="star">&#9733;</label>
+//   <input type="radio" id="1-star" name="rating" value="1" />
+//   <label for="1-star" class="star">&#9733;</label>
+// </div>
 
 
-      </div>
-    );
-  }
+
+
+//       </div>
+//     );
+//   }
 
 
 
