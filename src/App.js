@@ -1,4 +1,6 @@
 import { useState } from "react";
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
 import "./App.css";
 
 export default function App() { 
@@ -77,28 +79,36 @@ const [summary, setSummary] = useState("");
 return(
   <div className = "App"> 
   <div className = "add-movie-form">
-       <input
+  <TextField
+  onChange = {(event) => setName(event.target.value)} 
+  id="outlined-basic" 
+  label="Name"
+   variant="outlined" />
+       {/* <input
         type = "text" 
+        onChange = {(event) => setName(event.target.value)}
         placeholder = "Name"
-        onChange = {(event) => setName(event.target.value)} 
-        />
-       <input
-        type = "text" 
-        placeholder = "Poster"
+         /> */}
+       <TextField
+        label = "Poster" 
+        // placeholder = "Poster"
         onChange = {(event) => setPoster(event.target.value)}
+        variant="outlined"
         />
-       <input 
-       type = "text"
-        placeholder = "Rating" 
+       <TextField 
+       label = "Rating" 
+        //placeholder = "Rating" 
         onChange = {(event) => setRating(event.target.value)}
+        variant="outlined"
         />
-       <input 
-       type = "text"
-        placeholder = "Summary"
+       <TextField 
+       label = "Summary"
+        // placeholder = "Summary"
          onChange = {(event) => setSummary(event.target.value)}
+         variant="outlined"
          />
        {/* <button onClick = {() => console.log(name, poster, rating, summary)}>Add Movie</button> */}
-  <button
+  <Button
     onClick = {() => {
       const newMovie = {
         name: name,
@@ -108,15 +118,16 @@ return(
       };
 
       setMovieList([...movieList, newMovie])
-    } }>
-       Add Movie
-  </button>
+    } }
+       
+    variant="contained">Add Movie</Button>
   </div>
 
 <div className="movie-list">
-  {movieList.map(({ name, poster, rating, summary }) => 
+  {movieList.map(({ name, poster, rating, summary }, index) => 
   (
     <Movie 
+    key={index}
     name = {name} 
     poster={poster} 
     rating = {rating} 
@@ -188,6 +199,7 @@ const styles = {
           <h2 className="movie-name">{name}</h2>
           <p style={styles} className="movie-rating">⭐{rating}</p>
         </div>
+        <button>Toggle Description</button>
         <p className="movie-summary">{summary}</p>
         <Counter />
     </div>
