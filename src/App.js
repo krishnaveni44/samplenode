@@ -1,145 +1,458 @@
-import { useState } from "react";
-import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
+//import { useState } from "react";
 import "./App.css";
 
+
 export default function App() { 
+  return(
+      <div className="App"> 
 
-const INITIAL_MOVIE_LIST = [
-  {
-    name: "RRR",
-    poster:
-      "https://englishtribuneimages.blob.core.windows.net/gallary-content/2021/6/Desk/2021_6$largeimg_977224513.JPG",
-    rating: 8.8,
-    summary:
-      "RRR is an upcoming Indian Telugu-language period action drama film directed by S. S. Rajamouli, and produced by D. V. V. Danayya of DVV Entertainments."
-  },
-  {
-    name: "Iron man 2",
-    poster:
-      "https://m.media-amazon.com/images/M/MV5BMTM0MDgwNjMyMl5BMl5BanBnXkFtZTcwNTg3NzAzMw@@._V1_FMjpg_UX1000_.jpg",
-    rating: 7,
-    summary:
-      "With the world now aware that he is Iron Man, billionaire inventor Tony Stark (Robert Downey Jr.) faces pressure from all sides to share his technology with the military. He is reluctant to divulge the secrets of his armored suit, fearing the information will fall into the wrong hands. With Pepper Potts (Gwyneth Paltrow) and Rhodes (Don Cheadle) by his side, Tony must forge new alliances and confront a powerful new enemy."
-  },
-  {
-    name: "No Country for Old Men",
-    poster:
-      "https://upload.wikimedia.org/wikipedia/en/8/8b/No_Country_for_Old_Men_poster.jpg",
-    rating: 8.1,
-    summary:
-      "A hunter's life takes a drastic turn when he discovers two million dollars while strolling through the aftermath of a drug deal. He is then pursued by a psychopathic killer who wants the money."
-  },
-  {
-    name: "Jai Bhim",
-    poster:
-      "https://m.media-amazon.com/images/M/MV5BY2Y5ZWMwZDgtZDQxYy00Mjk0LThhY2YtMmU1MTRmMjVhMjRiXkEyXkFqcGdeQXVyMTI1NDEyNTM5._V1_FMjpg_UX1000_.jpg",
-    summary:
-      "A tribal woman and a righteous lawyer battle in court to unravel the mystery around the disappearance of her husband, who was picked up the police on a false case",
-    rating: 8.8
-  },
-  {
-    name: "The Avengers",
-    rating: 8,
-    summary:
-      "Marvel's The Avengers (classified under the name Marvel Avengers\n Assemble in the United Kingdom and Ireland), or simply The Avengers, is\n a 2012 American superhero film based on the Marvel Comics superhero team\n of the same name.",
-    poster:
-      "https://terrigen-cdn-dev.marvel.com/content/prod/1x/avengersendgame_lob_crd_05.jpg"
-  },
-  {
-    name: "Interstellar",
-    poster: "https://m.media-amazon.com/images/I/A1JVqNMI7UL._SL1500_.jpg",
-    rating: 8.6,
-    summary:
-      "When Earth becomes uninhabitable in the future, a farmer and ex-NASA\n pilot, Joseph Cooper, is tasked to pilot a spacecraft, along with a team\n of researchers, to find a new planet for humans."
-  },
-  {
-    name: "Baahubali",
-    poster: "https://flxt.tmsimg.com/assets/p11546593_p_v10_af.jpg",
-    rating: 8,
-    summary:
-      "In the kingdom of Mahishmati, Shivudu falls in love with a young warrior woman. While trying to woo her, he learns about the conflict-ridden past of his family and his true legacy."
-  },
-  {
-    name: "Ratatouille",
-    poster:
-      "https://resizing.flixster.com/gL_JpWcD7sNHNYSwI1ff069Yyug=/ems.ZW1zLXByZC1hc3NldHMvbW92aWVzLzc4ZmJhZjZiLTEzNWMtNDIwOC1hYzU1LTgwZjE3ZjQzNTdiNy5qcGc=",
-    rating: 8,
-    summary:
-      "Remy, a rat, aspires to become a renowned French chef. However, he fails to realise that people despise rodents and will never enjoy a meal cooked by him."
-  }
-];
-const [movieList, setMovieList] = useState(INITIAL_MOVIE_LIST);
-
-const [name, setName] = useState("");
-const [poster, setPoster] = useState("");
-const [rating, setRating] = useState("");
-const [summary, setSummary] = useState("");
-
-return(
-  <div className = "App"> 
-  <div className = "add-movie-form">
-  <TextField
-  onChange = {(event) => setName(event.target.value)} 
-  id="outlined-basic" 
-  label="Name"
-   variant="outlined" />
-       {/* <input
-        type = "text" 
-        onChange = {(event) => setName(event.target.value)}
-        placeholder = "Name"
-         /> */}
-       <TextField
-        label = "Poster" 
-        // placeholder = "Poster"
-        onChange = {(event) => setPoster(event.target.value)}
-        variant="outlined"
-        />
-       <TextField 
-       label = "Rating" 
-        //placeholder = "Rating" 
-        onChange = {(event) => setRating(event.target.value)}
-        variant="outlined"
-        />
-       <TextField 
-       label = "Summary"
-        // placeholder = "Summary"
-         onChange = {(event) => setSummary(event.target.value)}
-         variant="outlined"
-         />
-       {/* <button onClick = {() => console.log(name, poster, rating, summary)}>Add Movie</button> */}
-  <Button
-    onClick = {() => {
-      const newMovie = {
-        name: name,
-        poster: poster,
-        rating: rating,
-        summary: summary,
-      };
-
-      setMovieList([...movieList, newMovie])
-    } }
-       
-    variant="contained">Add Movie</Button>
-  </div>
-
-<div className="movie-list">
-  {movieList.map(({ name, poster, rating, summary }, index) => 
-  (
-    <Movie 
-    key={index}
-    name = {name} 
-    poster={poster} 
-    rating = {rating} 
-    summary={summary}
-    />
-  ))}
-</div>
-{/* <ColorBox />
-<AddColor /> */}
-</div>
-);
+<Star/> 
+      </div>
+ );
 }
+function Star(){
+  
+     return(
+       <div className = "star-container">
+         <div className="box-container">
+        <div className = "header">
+             <h5>
+             FREE
+             </h5>
+             <h6>
+               $0<span>/month</span>
+             </h6>
+             <div>
+             <hr />
+               </div>    
+              <ul>
+                <li><span class="fa-li"><i class="fas fa-check"></i></span>Single User</li>
+                <li><span class="fa-li"><i class="fas fa-check"></i></span>5GB Storage</li>
+                <li><span class="fa-li"><i class="fas fa-check"></i></span>Unlimited Public Projects</li>
+                <li><span class="fa-li"><i class="fas fa-check"></i></span>Community Access</li>
+                <li className="dimcolor"><span class="fa-li"><i class="fas fa-times"></i></span>Unlimited Private Projects</li>
+                <li className="dimcolor"><span class="fa-li"><i class="fas fa-times"></i></span>edicated Phone Support</li>
+                <li className="dimcolor"><span class="fa-li"><i class="fas fa-times"></i></span>Free Subdomain</li>
+                <li className="dimcolor"><span class="fa-li"><i class="fas fa-times"></i></span>Monthly Status Reports</li>
+              </ul>
+            <div> 
+            <a href="#" className="btn btn-primary text-uppercase">BUTTON</a>
+            </div>
+            </div>
+            </div>
+
+
+        {/* -----Plus Tier------- */}
+        <div className="box-container">
+        <div className = "header">
+             <h5>
+             PLUS
+             </h5>
+             <h6>
+               $9<span>/month</span>
+             </h6>
+             <div>
+               <hr />
+               </div>    
+              <ul>
+                <li><span class="fa-li"><i class="fas fa-check"></i></span><strong>5 Users</strong></li>
+                <li><span class="fa-li"><i class="fas fa-check"></i></span>50GB Storage</li>
+                <li><span class="fa-li"><i class="fas fa-check"></i></span>Unlimited Public Projects</li>
+                <li><span class="fa-li"><i class="fas fa-check"></i></span>Community Access</li>
+                <li><span class="fa-li"><i class="fas fa-check"></i></span>Unlimited Private Projects</li>
+                <li><span class="fa-li"><i class="fas fa-check"></i></span>Dedicated Phone Support</li>
+                <li><span class="fa-li"><i class="fas fa-check"></i></span>Free Subdomain</li>
+                <li className="dimcolor"><span class="fa-li"><i class="fas fa-times"></i></span>Monthly Status Reports</li>
+              </ul>
+            <div> 
+            <a href="#" className="btn btn-primary text-uppercase">BUTTON</a>
+            </div>
+        </div>
+       </div>
+
+
+         {/* -----Pro Tier------- */}
+         <div className="box-container">
+       <div className = "header">
+             <h5>
+             PRO
+             </h5>
+             <h6>
+               $49/ <span>/month</span>
+             </h6>
+             <div>
+             <hr />
+               </div>    
+              <ul>
+                <li><span class="fa-li"><i class="fas fa-check"></i></span><strong>Unlimited Users</strong></li>
+                <li><span class="fa-li"><i class="fas fa-check"></i></span>150GB Storage</li>
+                <li><span class="fa-li"><i class="fas fa-check"></i></span>Unlimited Public Projects</li>
+                <li><span class="fa-li"><i class="fas fa-check"></i></span>Community Access</li>
+                <li><span class="fa-li"><i class="fas fa-check"></i></span>Unlimited Private Projects</li>
+                <li><span class="fa-li"><i class="fas fa-check"></i></span>Dedicated Phone Support</li>
+                <li><span class="fa-li"><i class="fas fa-check"></i></span><strong>Unlimited</strong>Free Subdomain</li>
+                <li><span class="fa-li"><i class="fas fa-check"></i></span>Monthly Status Reports</li>
+              </ul>
+            <div> 
+            <a href="#" className="btn btn-primary text-uppercase">BUTTON</a>
+            </div>
+        </div>
+       </div>
+
+       </div>
+      
+     );           
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// import IconButton from '@mui/material/IconButton';
+// //import DeleteIcon from '@mui/icons-material/Delete';
+// import Button from '@mui/material/Button';
+// import TextField from '@mui/material/TextField';
+// import Badge from '@mui/material/Badge';
+// import ExpandLessIcon from '@mui/icons-material/ExpandLess';
+// import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+// import Card from '@mui/material/Card';
+// import CardContent from '@mui/material/CardContent';
+// import CardActions from '@mui/material/CardActions';
+// import { ColorBox } from "./ColorBox";
+// import { double, Msg } from "./Msg"; 
+//import MailIcon from '@mui/icons-material/Mail';
+//import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+
+// import { Msg } from "./Msg";
+// //import { Welcome } from "./Welcome.1";
+// import { Welcome } from "./Welcome"; 
+
+
+
+// export default function App() { 
+//      return(
+//     <div className="App">
+//       <AddTask/>
+//       <TaskBox/> 
+//   </div>
+// );
+//      }
+
+
+
+// import React from "react";
+
+
+// function Todo({ todo, index, completeTodo, removeTodo }) {
+//   return (
+//     <div
+//       className="todo"
+//       style={{ textDecoration: todo.isCompleted ? "line-through" : "" }}
+//     >
+//       {todo.text}
+//       <div>
+//         <button onClick={() => completeTodo(index)}>Complete(strike)</button>
+//         <button onClick={() => removeTodo(index)}>Delete</button>
+//       </div>
+//     </div>
+//   );
+// }
+
+// function TodoForm({ addTodo }) {
+//   const [value, setValue] = React.useState("");
+
+//   const handleSubmit = e => {
+//     e.preventDefault();
+//     if (!value) return;
+//     addTodo(value);
+//     setValue("");
+//   };
+
+//   return (
+//     <form onSubmit={handleSubmit}>
+//       <input
+//         type="text"
+//         className="input"
+//         value={value}
+//         placeholder="Add Task..."
+//         onChange={e => setValue(e.target.value)}
+//       />
+//     </form>
+//   );
+// }
+
+// function App() {
+//   const [todos, setTodos] = React.useState([
+//     {
+//       text: "Learn about React",
+//       isCompleted: false
+//     },
+//     {
+//       text: "Meet friend for lunch",
+//       isCompleted: false
+//     },
+//     {
+//       text: "Build really cool todo app",
+//       isCompleted: false
+//     }
+//   ]);
+
+//   const addTodo = text => {
+//     const newTodos = [...todos, { text }];
+//     setTodos(newTodos);
+//   };
+
+//   const completeTodo = index => {
+//     const newTodos = [...todos];
+//     newTodos[index].isCompleted = true;
+//     setTodos(newTodos);
+//   };
+
+//   const removeTodo = index => {
+//     const newTodos = [...todos];
+//     newTodos.splice(index, 1);
+//     setTodos(newTodos);
+//   };
+
+//   return (
+//     <div className="app">
+//       <div className="todo-list">
+//         {todos.map((todo, index) => (
+//           <Todo
+//             key={index}
+//             index={index}
+//             todo={todo}
+//             completeTodo={completeTodo}
+//             removeTodo={removeTodo}
+
+//           />
+//         ))}
+//         <TodoForm addTodo={addTodo} />
+//       </div>
+//     {/* <Msg />
+//     <Welcome /> */}
+//     </div>
+//   );
+// }
+
+// export default App;
+
+
+
+
+
+    
+
+
+// function AddTask() {
+//   const [task, setTask] = useState("");
+//   // const styles = {
+//   //   background: color,
+//   // };
+// const [taskList, setTaskList] = useState(
+//   ["Create theme", 
+//   "Work on wordpress",
+//   "Organize office main department",
+//   "Error solve in HTML template"]);
+    
+//   // Todo - Capture - Typing event
+//   return(
+//     <div>
+//       <input 
+//       value = {task}
+//       //style={styles}
+//       onChange = {(event) => setTask(event.target.value)}
+//       placeholder = "New Task..." 
+//       />
+//    <button onClick = {()=> setTaskList([...taskList, task])}>
+//      Add Task</button>
+
+// {taskList.map((clr) => (
+//   <TaskBox task = {clr} />
+// ))}
+
+//    {/* <ColorBox color = "red" />
+//    <ColorBox color = "Orange" />
+//    <ColorBox color = "teal" /> */}
+//     </div>
+//   );
+// }
+
+// function TaskBox({ task }){
+//   const styles = {
+//     backgroundColor: task,
+//     height: "25px",
+//     width: "200px",
+//     marginTop: "10px",
+//   };
+//   return <div style = {styles}></div>
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// export default function App() { 
+
+// const INITIAL_MOVIE_LIST = [
+//   {
+//     name: "RRR",
+//     poster:
+//       "https://englishtribuneimages.blob.core.windows.net/gallary-content/2021/6/Desk/2021_6$largeimg_977224513.JPG",
+//     rating: 8.8,
+//     summary:
+//       "RRR is an upcoming Indian Telugu-language period action drama film directed by S. S. Rajamouli, and produced by D. V. V. Danayya of DVV Entertainments."
+//   },
+//   {
+//     name: "Iron man 2",
+//     poster:
+//       "https://m.media-amazon.com/images/M/MV5BMTM0MDgwNjMyMl5BMl5BanBnXkFtZTcwNTg3NzAzMw@@._V1_FMjpg_UX1000_.jpg",
+//     rating: 7,
+//     summary:
+//       "With the world now aware that he is Iron Man, billionaire inventor Tony Stark (Robert Downey Jr.) faces pressure from all sides to share his technology with the military. He is reluctant to divulge the secrets of his armored suit, fearing the information will fall into the wrong hands. With Pepper Potts (Gwyneth Paltrow) and Rhodes (Don Cheadle) by his side, Tony must forge new alliances and confront a powerful new enemy."
+//   },
+//   {
+//     name: "No Country for Old Men",
+//     poster:
+//       "https://upload.wikimedia.org/wikipedia/en/8/8b/No_Country_for_Old_Men_poster.jpg",
+//     rating: 8.1,
+//     summary:
+//       "A hunter's life takes a drastic turn when he discovers two million dollars while strolling through the aftermath of a drug deal. He is then pursued by a psychopathic killer who wants the money."
+//   },
+//   {
+//     name: "Jai Bhim",
+//     poster:
+//       "https://m.media-amazon.com/images/M/MV5BY2Y5ZWMwZDgtZDQxYy00Mjk0LThhY2YtMmU1MTRmMjVhMjRiXkEyXkFqcGdeQXVyMTI1NDEyNTM5._V1_FMjpg_UX1000_.jpg",
+//     summary:
+//       "A tribal woman and a righteous lawyer battle in court to unravel the mystery around the disappearance of her husband, who was picked up the police on a false case",
+//     rating: 8.8
+//   },
+//   {
+//     name: "The Avengers",
+//     rating: 8,
+//     summary:
+//       "Marvel's The Avengers (classified under the name Marvel Avengers\n Assemble in the United Kingdom and Ireland), or simply The Avengers, is\n a 2012 American superhero film based on the Marvel Comics superhero team\n of the same name.",
+//     poster:
+//       "https://terrigen-cdn-dev.marvel.com/content/prod/1x/avengersendgame_lob_crd_05.jpg"
+//   },
+//   {
+//     name: "Interstellar",
+//     poster: "https://m.media-amazon.com/images/I/A1JVqNMI7UL._SL1500_.jpg",
+//     rating: 8.6,
+//     summary:
+//       "When Earth becomes uninhabitable in the future, a farmer and ex-NASA\n pilot, Joseph Cooper, is tasked to pilot a spacecraft, along with a team\n of researchers, to find a new planet for humans."
+//   },
+//   {
+//     name: "Baahubali",
+//     poster: "https://flxt.tmsimg.com/assets/p11546593_p_v10_af.jpg",
+//     rating: 8,
+//     summary:
+//       "In the kingdom of Mahishmati, Shivudu falls in love with a young warrior woman. While trying to woo her, he learns about the conflict-ridden past of his family and his true legacy."
+//   },
+//   {
+//     name: "Ratatouille",
+//     poster:
+//       "https://resizing.flixster.com/gL_JpWcD7sNHNYSwI1ff069Yyug=/ems.ZW1zLXByZC1hc3NldHMvbW92aWVzLzc4ZmJhZjZiLTEzNWMtNDIwOC1hYzU1LTgwZjE3ZjQzNTdiNy5qcGc=",
+//     rating: 8,
+//     summary:
+//       "Remy, a rat, aspires to become a renowned French chef. However, he fails to realise that people despise rodents and will never enjoy a meal cooked by him."
+//   }
+// ];
+// const [movieList, setMovieList] = useState(INITIAL_MOVIE_LIST);
+
+// const [name, setName] = useState("");
+// const [poster, setPoster] = useState("");
+// const [rating, setRating] = useState("");
+// const [summary, setSummary] = useState("");
+
+// return(
+//   <div className = "App"> 
+//   <div className = "add-movie-form">
+//   <TextField
+//   onChange = {(event) => setName(event.target.value)} 
+//   id="outlined-basic" 
+//   label="Name"
+//    variant="outlined" />
+//        {/* <input
+//         type = "text" 
+//         onChange = {(event) => setName(event.target.value)}
+//         placeholder = "Name"
+//          /> */}
+//        <TextField
+//         label = "Poster" 
+//         // placeholder = "Poster"
+//         onChange = {(event) => setPoster(event.target.value)}
+//         variant="outlined"
+//         />
+//        <TextField 
+//        label = "Rating" 
+//         //placeholder = "Rating" 
+//         onChange = {(event) => setRating(event.target.value)}
+//         variant="outlined"
+//         />
+//        <TextField 
+//        label = "Summary"
+//         // placeholder = "Summary"
+//          onChange = {(event) => setSummary(event.target.value)}
+//          variant="outlined"
+//          />
+//        {/* <button onClick = {() => console.log(name, poster, rating, summary)}>Add Movie</button> */}
+//   <Button
+//     onClick = {() => {
+//       const newMovie = {
+//         name: name,
+//         poster: poster,
+//         rating: rating,
+//         summary: summary,
+//       };
+
+//       setMovieList([...movieList, newMovie])
+//     } }
+       
+//     variant="contained">Add Movie</Button>
+//   </div>
+
+// <div className="movie-list">
+//   {movieList.map(({ name, poster, rating, summary }, index) => 
+//   (
+//     <Movie 
+//     key={index}
+//     name = {name} 
+//     poster={poster} 
+//     rating = {rating} 
+//     summary={summary}
+//     />
+//   ))}
+// </div>
+// {/* <ColorBox />
+// <AddColor /> */}
+// </div>
+// );
+// }
 
 
 // function AddColor() {
@@ -185,38 +498,100 @@ return(
 
 
 
+// > 8.5 green
+// <= 8.5 red
+
 // Task
-function Movie({ name, poster, rating, summary }){
-const styles = {
-  // backgroundColor: "green",
-  color: rating > 8.5 ? "green" : "red",
-};
+// 1.New Movie - AddMovie
+// 2. Warning: Each child in a list should have a unique "key" prop - why?
 
-  return(
-    <div className = "movie-container">
-        <img src={poster} alt={name} className="movie-poster"  />
-        <div className="movie-specs">
-          <h2 className="movie-name">{name}</h2>
-          <p style={styles} className="movie-rating">⭐{rating}</p>
-        </div>
-        <button>Toggle Description</button>
-        <p className="movie-summary">{summary}</p>
-        <Counter />
-    </div>
-  );
+
+// // Task
+// function Movie({ name, poster, rating, summary }){
+//   // Normal JS
+//   // Conditional styling
+// const styles = {
+//   // backgroundColor: "green",
+//   color: rating > 8.5 ? "green" : "red",
+// };
+// // Inside return only jsx
+// // none -> block (conditional styling)
+// const [show, setShow] = useState(true);
+ 
+// const summaryStyles = {
+//  display: show ? "block" : "none",
+// };
+//   return(
+//     <Card className = "movie-container">
+//         <img src={poster} alt={name} className="movie-poster"  />
+//        <CardContent>
+//         <div className="movie-specs">
+//           <h2 className="movie-name">{name}
+           
+//         <IconButton
+//          color="primary"
+//          onClick = {() => setShow(!show)}
+//          aria-label="Toggle summary">
+//            {/* conditional rendering */}
+//         {show ? <ExpandLessIcon /> : <ExpandMoreIcon />}
+//         </IconButton>
+//        </h2>
+//        <p style={styles} className="movie-rating">⭐{rating}</p>
+//        </div>
+//         {/* <button onClick = {() => setShow(!show)}>Toggle Description</button> */}
+//         {/* <p style = {summaryStyles} className = "movie-summary">
+//           {summary}</p>     */}
+
+//           {/* conditional rendering */}
+//         {show ? <p className = "movie-summary">{summary}</p> : ""}
+//         </CardContent>
+//         <CardActions>
+//         <Counter />
+//         </CardActions>
+        
+//     </Card>
+//   );
   
-}
+// }
 
-function Counter(){
-  const [like, setLike] = useState(0);
-  const [disLike, setDisLike] = useState(0);
-  return(
-    <div className = "counter-container">
-      <button className="like-dislike" onClick = {() =>setLike(like + 1)} >👍 {like} </button>
-      <button className="like-dislike" onClick = {() => setDisLike(disLike + 1)}> 👎 {disLike} </button>
-    </div>
-  )
-}
+// // camel case onClick -> C must be capital
+// // hooks - function - 'use'
+// // useState -> To inform react the value is update
+// // const [state, setState] = useState(Intial value)
+// // state -> current value
+// // setState -> helps to update state
+// function Counter(){
+//   const [like, setLike] = useState(0);
+//   const [disLike, setDisLike] = useState(0);
+//   return(
+//     <div className = "counter-container">
+//       <IconButton 
+//       className="like-dislike"
+//        onClick = {() =>setLike(like + 1)} 
+//        aria-label="like button" 
+//        color = "primary"
+//        >
+//        <Badge badgeContent={like} color="primary"> 
+//        👍
+//        </Badge>
+//        </IconButton>
+//     <IconButton 
+//       className="like-dislike"
+//        onClick = {() =>setDisLike(disLike + 1)} 
+//        aria-label="dislike button" 
+//        color = "error"
+//        >
+//          👎 {disLike}
+//       </IconButton>
+//       {/* <button className="like-dislike" onClick = {() =>setLike(like + 1)} >👍 {like} </button>
+//       <button className="like-dislike" onClick = {() => setDisLike(disLike + 1)}> 👎 {disLike} </button> */}
+//     </div>
+//   );
+// }
+
+
+
+
 
 
 
@@ -318,10 +693,6 @@ function Counter(){
 //   <input type="radio" id="1-star" name="rating" value="1" />
 //   <label for="1-star" class="star">&#9733;</label>
 // </div>
-
-
-
-
 //       </div>
 //     );
 //   }
@@ -472,22 +843,9 @@ function Counter(){
 //       {users.map((usr) => (
 //         <Welcome name={usr.name} profile={usr.profile} />
 //       ))}
+//       <Msg />
 //     </div>
 //   );
 // }
 
-// function Msg({ name }) {
-//   return (
-//     <div className="come">
-//       <h1>Hello, {name}😀🥗🎄</h1>
-//     </div>
-//   );
-// }
-// function Welcome({ name, profile }) {
-//   return (
-//     <div clasName="come">
-//       <img className="user-profile-pic" src={profile} alt="profile pic" />
-//       <h1>Hello, {name}🎄😀</h1>
-//     </div>
-//   );
-// }
+
