@@ -1,157 +1,42 @@
-//import { useState } from "react";
+import { useState } from "react";
+import { useParams } from "react-router-dom";
 import "./App.css";
 
+import IconButton from '@mui/material/IconButton';
+import DeleteIcon from '@mui/icons-material/Delete';
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
+import Badge from '@mui/material/Badge';
+import ExpandLessIcon from '@mui/icons-material/ExpandLess';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardActions from '@mui/material/CardActions';
+//import { ColorBox } from "./ColorBox";
+//import { double, Msg } from "./Msg"; 
+import MailIcon from '@mui/icons-material/Mail';
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+//import { Link } from "react-router-dom";
+import { Switch, Redirect, Route, Link } from "react-router-dom";
+import { Msg } from "./Msg";
 
-export default function App() { 
-  return(
-      <div className="App"> 
-
-<Star/> 
-      </div>
- );
-}
-function Star(){
-  
-     return(
-       <div className = "star-container">
-         <div className="box-container">
-        <div className = "header">
-             <h5>
-             FREE
-             </h5>
-             <h6>
-               $0<span>/month</span>
-             </h6>
-             <div>
-             <hr />
-               </div>    
-              <ul>
-                <li><span class="fa-li"><i class="fas fa-check"></i></span>Single User</li>
-                <li><span class="fa-li"><i class="fas fa-check"></i></span>5GB Storage</li>
-                <li><span class="fa-li"><i class="fas fa-check"></i></span>Unlimited Public Projects</li>
-                <li><span class="fa-li"><i class="fas fa-check"></i></span>Community Access</li>
-                <li className="dimcolor"><span class="fa-li"><i class="fas fa-times"></i></span>Unlimited Private Projects</li>
-                <li className="dimcolor"><span class="fa-li"><i class="fas fa-times"></i></span>edicated Phone Support</li>
-                <li className="dimcolor"><span class="fa-li"><i class="fas fa-times"></i></span>Free Subdomain</li>
-                <li className="dimcolor"><span class="fa-li"><i class="fas fa-times"></i></span>Monthly Status Reports</li>
-              </ul>
-            <div> 
-            <a href="#" className="btn btn-primary text-uppercase">BUTTON</a>
-            </div>
-            </div>
-            </div>
+import useWindowSize from "react-use/lib/useWindowSize";
+import Confetti from "react-confetti";
+import { NotificationsOffRounded } from "@mui/icons-material";
+import InfoIcon from "@mui/icons-material/Info";
+import { useHistory } from "react-router-dom";
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import SendIcon from '@mui/icons-material/Send';
+import Stack from "@mui/material/Stack";
+import EditIcon from "@mui/icons-material/Edit";
 
 
-        {/* -----Plus Tier------- */}
-        <div className="box-container">
-        <div className = "header">
-             <h5>
-             PLUS
-             </h5>
-             <h6>
-               $9<span>/month</span>
-             </h6>
-             <div>
-               <hr />
-               </div>    
-              <ul>
-                <li><span class="fa-li"><i class="fas fa-check"></i></span><strong>5 Users</strong></li>
-                <li><span class="fa-li"><i class="fas fa-check"></i></span>50GB Storage</li>
-                <li><span class="fa-li"><i class="fas fa-check"></i></span>Unlimited Public Projects</li>
-                <li><span class="fa-li"><i class="fas fa-check"></i></span>Community Access</li>
-                <li><span class="fa-li"><i class="fas fa-check"></i></span>Unlimited Private Projects</li>
-                <li><span class="fa-li"><i class="fas fa-check"></i></span>Dedicated Phone Support</li>
-                <li><span class="fa-li"><i class="fas fa-check"></i></span>Free Subdomain</li>
-                <li className="dimcolor"><span class="fa-li"><i class="fas fa-times"></i></span>Monthly Status Reports</li>
-              </ul>
-            <div> 
-            <a href="#" className="btn btn-primary text-uppercase">BUTTON</a>
-            </div>
-        </div>
-       </div>
-
-
-         {/* -----Pro Tier------- */}
-         <div className="box-container">
-       <div className = "header">
-             <h5>
-             PRO
-             </h5>
-             <h6>
-               $49/ <span>/month</span>
-             </h6>
-             <div>
-             <hr />
-               </div>    
-              <ul>
-                <li><span class="fa-li"><i class="fas fa-check"></i></span><strong>Unlimited Users</strong></li>
-                <li><span class="fa-li"><i class="fas fa-check"></i></span>150GB Storage</li>
-                <li><span class="fa-li"><i class="fas fa-check"></i></span>Unlimited Public Projects</li>
-                <li><span class="fa-li"><i class="fas fa-check"></i></span>Community Access</li>
-                <li><span class="fa-li"><i class="fas fa-check"></i></span>Unlimited Private Projects</li>
-                <li><span class="fa-li"><i class="fas fa-check"></i></span>Dedicated Phone Support</li>
-                <li><span class="fa-li"><i class="fas fa-check"></i></span><strong>Unlimited</strong>Free Subdomain</li>
-                <li><span class="fa-li"><i class="fas fa-check"></i></span>Monthly Status Reports</li>
-              </ul>
-            <div> 
-            <a href="#" className="btn btn-primary text-uppercase">BUTTON</a>
-            </div>
-        </div>
-       </div>
-
-       </div>
-      
-     );           
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// import IconButton from '@mui/material/IconButton';
-// //import DeleteIcon from '@mui/icons-material/Delete';
-// import Button from '@mui/material/Button';
-// import TextField from '@mui/material/TextField';
-// import Badge from '@mui/material/Badge';
-// import ExpandLessIcon from '@mui/icons-material/ExpandLess';
-// import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-// import Card from '@mui/material/Card';
-// import CardContent from '@mui/material/CardContent';
-// import CardActions from '@mui/material/CardActions';
-// import { ColorBox } from "./ColorBox";
-// import { double, Msg } from "./Msg"; 
-//import MailIcon from '@mui/icons-material/Mail';
-//import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 
 // import { Msg } from "./Msg";
 // //import { Welcome } from "./Welcome.1";
 // import { Welcome } from "./Welcome"; 
 
-
-
-// export default function App() { 
-//      return(
-//     <div className="App">
-//       <AddTask/>
-//       <TaskBox/> 
-//   </div>
-// );
-//      }
-
-
-
-// import React from "react";
+//import React from "react";
 
 
 // function Todo({ todo, index, completeTodo, removeTodo }) {
@@ -227,6 +112,11 @@ function Star(){
 
 //   return (
 //     <div className="app">
+//       <div>
+//         <button>All</button>
+//         <button>Active</button>
+//         <button>Completed</button>
+//       </div>
 //       <div className="todo-list">
 //         {todos.map((todo, index) => (
 //           <Todo
@@ -252,9 +142,122 @@ function Star(){
 
 
 
-    
 
 
+// export default function App() { 
+//   return(
+//       <div className="App"> 
+
+// <Star/> 
+//       </div>
+//  );
+// }
+// function Star(){
+  
+//      return(
+//        <div className = "star-container">
+//          <div className="box-container">
+//         <div className = "header">
+//              <h5>
+//              FREE
+//              </h5>
+//              <h6>
+//                $0<span>/month</span>
+//              </h6>
+//              <div>
+//              <hr />
+//                </div>    
+//               <ul>
+//                 <li><span class="fa-li"><i class="fas fa-check"></i></span>Single User</li>
+//                 <li><span class="fa-li"><i class="fas fa-check"></i></span>5GB Storage</li>
+//                 <li><span class="fa-li"><i class="fas fa-check"></i></span>Unlimited Public Projects</li>
+//                 <li><span class="fa-li"><i class="fas fa-check"></i></span>Community Access</li>
+//                 <li className="dimcolor"><span class="fa-li"><i class="fas fa-times"></i></span>Unlimited Private Projects</li>
+//                 <li className="dimcolor"><span class="fa-li"><i class="fas fa-times"></i></span>edicated Phone Support</li>
+//                 <li className="dimcolor"><span class="fa-li"><i class="fas fa-times"></i></span>Free Subdomain</li>
+//                 <li className="dimcolor"><span class="fa-li"><i class="fas fa-times"></i></span>Monthly Status Reports</li>
+//               </ul>
+//             <div> 
+//             <a href="#" className="btn btn-primary text-uppercase">BUTTON</a>
+//             </div>
+//             </div>
+//             </div>
+
+
+//         {/* -----Plus Tier------- */}
+//         <div className="box-container">
+//         <div className = "header">
+//              <h5>
+//              PLUS
+//              </h5>
+//              <h6>
+//                $9<span>/month</span>
+//              </h6>
+//              <div>
+//                <hr />
+//                </div>    
+//               <ul>
+//                 <li><span class="fa-li"><i class="fas fa-check"></i></span><strong>5 Users</strong></li>
+//                 <li><span class="fa-li"><i class="fas fa-check"></i></span>50GB Storage</li>
+//                 <li><span class="fa-li"><i class="fas fa-check"></i></span>Unlimited Public Projects</li>
+//                 <li><span class="fa-li"><i class="fas fa-check"></i></span>Community Access</li>
+//                 <li><span class="fa-li"><i class="fas fa-check"></i></span>Unlimited Private Projects</li>
+//                 <li><span class="fa-li"><i class="fas fa-check"></i></span>Dedicated Phone Support</li>
+//                 <li><span class="fa-li"><i class="fas fa-check"></i></span>Free Subdomain</li>
+//                 <li className="dimcolor"><span class="fa-li"><i class="fas fa-times"></i></span>Monthly Status Reports</li>
+//               </ul>
+//             <div> 
+//             <a href="#" className="btn btn-primary text-uppercase">BUTTON</a>
+//             </div>
+//         </div>
+//        </div>
+
+
+//          {/* -----Pro Tier------- */}
+//          <div className="box-container">
+//        <div className = "header">
+//              <h5>
+//              PRO
+//              </h5>
+//              <h6>
+//                $49/ <span>/month</span>
+//              </h6>
+//              <div>
+//              <hr />
+//                </div>    
+//               <ul>
+//                 <li><span class="fa-li"><i class="fas fa-check"></i></span><strong>Unlimited Users</strong></li>
+//                 <li><span class="fa-li"><i class="fas fa-check"></i></span>150GB Storage</li>
+//                 <li><span class="fa-li"><i class="fas fa-check"></i></span>Unlimited Public Projects</li>
+//                 <li><span class="fa-li"><i class="fas fa-check"></i></span>Community Access</li>
+//                 <li><span class="fa-li"><i class="fas fa-check"></i></span>Unlimited Private Projects</li>
+//                 <li><span class="fa-li"><i class="fas fa-check"></i></span>Dedicated Phone Support</li>
+//                 <li><span class="fa-li"><i class="fas fa-check"></i></span><strong>Unlimited</strong>Free Subdomain</li>
+//                 <li><span class="fa-li"><i class="fas fa-check"></i></span>Monthly Status Reports</li>
+//               </ul>
+//             <div> 
+//             <a href="#" className="btn btn-primary text-uppercase">BUTTON</a>
+//             </div>
+//         </div>
+//        </div>
+
+//        </div>
+      
+//      );           
+// }
+
+
+
+
+
+// export default function App() { 
+//   return(
+//  <div className="App">
+//    <AddTask/>
+//    <TaskBox/> 
+// </div>
+// );
+//   }
 // function AddTask() {
 //   const [task, setTask] = useState("");
 //   // const styles = {
@@ -301,200 +304,441 @@ function Star(){
 
 
 
+export default function App() { 
+
+const INITIAL_MOVIE_LIST = [
+  {
+    name: "RRR",
+    poster:
+      "https://englishtribuneimages.blob.core.windows.net/gallary-content/2021/6/Desk/2021_6$largeimg_977224513.JPG",
+    rating: 8.8,
+    summary:
+      "RRR is an upcoming Indian Telugu-language period action drama film directed by S. S. Rajamouli, and produced by D. V. V. Danayya of DVV Entertainments.",
+    trailer: "https://www.youtube.com/embed/f_vbAtFSEc0"
+  },
+  {
+    name: "Iron man 2",
+    poster:
+      "https://m.media-amazon.com/images/M/MV5BMTM0MDgwNjMyMl5BMl5BanBnXkFtZTcwNTg3NzAzMw@@._V1_FMjpg_UX1000_.jpg",
+    rating: 7,
+    summary:
+      "With the world now aware that he is Iron Man, billionaire inventor Tony Stark (Robert Downey Jr.) faces pressure from all sides to share his technology with the military. He is reluctant to divulge the secrets of his armored suit, fearing the information will fall into the wrong hands. With Pepper Potts (Gwyneth Paltrow) and Rhodes (Don Cheadle) by his side, Tony must forge new alliances and confront a powerful new enemy.",
+    trailer: "https://www.youtube.com/embed/wKtcmiifycU"
+  },
+  {
+    name: "No Country for Old Men",
+    poster:
+      "https://upload.wikimedia.org/wikipedia/en/8/8b/No_Country_for_Old_Men_poster.jpg",
+    rating: 8.1,
+    summary:
+      "A hunter's life takes a drastic turn when he discovers two million dollars while strolling through the aftermath of a drug deal. He is then pursued by a psychopathic killer who wants the money.",
+    trailer: "https://www.youtube.com/embed/38A__WT3-o0"
+  },
+  {
+    name: "Jai Bhim",
+    poster:
+      "https://m.media-amazon.com/images/M/MV5BY2Y5ZWMwZDgtZDQxYy00Mjk0LThhY2YtMmU1MTRmMjVhMjRiXkEyXkFqcGdeQXVyMTI1NDEyNTM5._V1_FMjpg_UX1000_.jpg",
+    summary:
+      "A tribal woman and a righteous lawyer battle in court to unravel the mystery around the disappearance of her husband, who was picked up the police on a false case",
+    rating: 8.8,
+    trailer: "https://www.youtube.com/embed/nnXpbTFrqXA"
+  },
+  {
+    name: "The Avengers",
+    rating: 8,
+    summary:
+      "Marvel's The Avengers (classified under the name Marvel Avengers\n Assemble in the United Kingdom and Ireland), or simply The Avengers, is\n a 2012 American superhero film based on the Marvel Comics superhero team\n of the same name.",
+    poster:
+      "https://terrigen-cdn-dev.marvel.com/content/prod/1x/avengersendgame_lob_crd_05.jpg",
+    trailer: "https://www.youtube.com/embed/eOrNdBpGMv8"
+  },
+  {
+    name: "Interstellar",
+    poster: "https://m.media-amazon.com/images/I/A1JVqNMI7UL._SL1500_.jpg",
+    rating: 8.6,
+    summary:
+      "When Earth becomes uninhabitable in the future, a farmer and ex-NASA\n pilot, Joseph Cooper, is tasked to pilot a spacecraft, along with a team\n of researchers, to find a new planet for humans.",
+    trailer: "https://www.youtube.com/embed/zSWdZVtXT7E"
+  },
+  {
+    name: "Baahubali",
+    poster: "https://flxt.tmsimg.com/assets/p11546593_p_v10_af.jpg",
+    rating: 8,
+    summary:
+      "In the kingdom of Mahishmati, Shivudu falls in love with a young warrior woman. While trying to woo her, he learns about the conflict-ridden past of his family and his true legacy.",
+    trailer: "https://www.youtube.com/embed/sOEg_YZQsTI"
+  },
+  {
+    name: "Ratatouille",
+    poster:
+      "https://resizing.flixster.com/gL_JpWcD7sNHNYSwI1ff069Yyug=/ems.ZW1zLXByZC1hc3NldHMvbW92aWVzLzc4ZmJhZjZiLTEzNWMtNDIwOC1hYzU1LTgwZjE3ZjQzNTdiNy5qcGc=",
+    rating: 8,
+    summary:
+      "Remy, a rat, aspires to become a renowned French chef. However, he fails to realise that people despise rodents and will never enjoy a meal cooked by him.",
+    trailer: "https://www.youtube.com/embed/NgsQ8mVkN8w"
+  }
+  ];
+const [movieList, setMovieList] = useState(INITIAL_MOVIE_LIST);
+
+const [name, setName] = useState("");
+const [poster, setPoster] = useState("");
+const [rating, setRating] = useState("");
+const [summary, setSummary] = useState("");
+
+return(
+  <div className = "App"> 
+    <ul>
+        <li>
+            {/* change the url bar but don't refresh */}
+            <Link to = "/movies">Movies</Link>
+        </li>
+        <li>
+        <Link to="/color-game">Color game</Link>
+        </li>
+        <li>
+        <Link to="/tic-tac-toe">Tic Tac Toe</Link>
+        </li>
+        <li>
+        <Link to="/movies/add">Add Movies</Link>
+        </li>
+        <li>
+            <Link to ="/">Home</Link>
+        </li>
+    </ul>
+
+
+        {/* A <Switch> looks through all its child elements and renders the first one 
+            which matches the current URL. Use a <Switch> you have multiple routers, but you want ...of them to render at a time. */}
+
+<Switch>
+      <Route exact path="/">
+        <Msg />
+      </Route>
+    <Route path="/films">
+        <Redirect to = "/movies" />
+    </Route>
+    {  /*Task -  Edit movie   -   /movies/edit/:id */ }
+    <Route path="/movies/add">
+        <AddMovie movieList = {movieList} setMovieList={setMovieList} />
+     </Route>
+     {/* :  -> makes id a variable */}
+     <Route path = "/movies/edit/:id"> 
+          <EditMovie movieList = {movieList} setMovieList={setMovieList} />
+     </Route>
+     {/* : -> makes id a variable */}
+     <Route path = "/movies/:id">
+        <MovieDetails movieList={movieList} />
+    </Route>
+    <Route path="/movies">
+      <MovieList movieList = {movieList} setMovieList={setMovieList} />
+     </Route>
+    <Route path="/color-game">
+      <AddColor />
+    </Route>
+    <Route path="/tic-tac-toe">
+      <TicTacToe />
+    </Route>
+     <Route path="**"> 
+        <NotFound /> 
+    </Route>
+
+  </Switch>
+
+  {/* <div className = "add-movie-form">
+  
+  </div> */}
+
+{/* <ColorBox />
+<AddColor /> */}
+</div>
+);
+}
+
+function AddMovie({ movieList, setMovieList }){
+const [name, setName] = useState("");
+const [poster, setPoster] = useState("");
+const [rating, setRating] = useState("");
+const [summary, setSummary] = useState("");
+const [trailer, setTrailer] = useState("");
+const history = useHistory();
+
+  return (
+  <div className = "add-movie-form">
+    <TextField
+      onChange = {(event) => setName(event.target.value)} 
+      id="outlined-basic" 
+      label="Name"
+      variant="outlined"
+      />
+       {/* <input
+        type = "text" 
+        onChange = {(event) => setName(event.target.value)}
+        placeholder = "Name"
+         /> */}
+      <TextField
+        label = "Poster" 
+        // placeholder = "Poster"
+        onChange = {(event) => setPoster(event.target.value)}
+        variant="outlined"
+        />
+       <TextField 
+       label = "Rating" 
+        //placeholder = "Rating" 
+        onChange = {(event) => setRating(event.target.value)}
+        variant="outlined"
+        />
+       <TextField 
+       label = "Summary"
+        // placeholder = "Summary"
+         onChange = {(event) => setSummary(event.target.value)}
+         variant="outlined"
+         />
+         <TextField 
+        type="text"
+        label = "Trailer"
+          onChange = {(event) => setTrailer(event.target.value)}
+         variant="outlined"
+         />
+     {/* <button onClick = {() => console.log(name, poster, rating, summary)}>Add Movie</button> */}
+  {/* Copy the movieList and add new movie to it */}
+  <Button
+    onClick = {() => {
+      const newMovie = {
+        name: name,
+        poster: poster,
+        rating: rating,
+        summary: summary,
+        trailer: trailer
+      };
+
+      setMovieList([...movieList, newMovie]);
+      history.push("/movies");
+    } }
+   variant="contained"
+   >
+    Add Movie</Button>
+   </div>
+   );
+}
+
+
+function EditMovie({ movieList, setMovieList }){
+  const { id } = useParams();
+  const movie = movieList[id];
+  console.log(movie);
+  
+  const [name, setName] = useState(movie.name);
+  const [poster, setPoster] = useState(movie.poster);
+  const [rating, setRating] = useState(movie.rating);
+  const [summary, setSummary] = useState(movie.summary);
+  const [trailer, setTrailer] = useState(movie.trailer);
+  const history = useHistory();
+  
+    return (
+    <div className = "add-movie-form">
+      <TextField
+        value = {name}
+        onChange = {(event) => setName(event.target.value)} 
+        id="outlined-basic" 
+        label="Name"
+        variant="outlined"
+        />
+         {/* <input
+          type = "text" 
+          onChange = {(event) => setName(event.target.value)}
+          placeholder = "Name"
+           /> */}
+        <TextField
+          value = {poster}
+          label = "Poster" 
+          // placeholder = "Poster"
+          onChange = {(event) => setPoster(event.target.value)}
+          variant="outlined"
+          />
+         <TextField 
+         value = {rating}
+         label = "Rating" 
+          //placeholder = "Rating" 
+          onChange = {(event) => setRating(event.target.value)}
+          variant="outlined"
+          />
+         <TextField 
+         value = {summary}
+         label = "Summary"
+          // placeholder = "Summary"
+           onChange = {(event) => setSummary(event.target.value)}
+           variant="outlined"
+           />
+           <TextField 
+           value = {trailer}
+          type="text"
+          label = "Trailer"
+            onChange = {(event) => setTrailer(event.target.value)}
+           variant="outlined"
+           />
+       {/* <button onClick = {() => console.log(name, poster, rating, summary)}>Add Movie</button> */}
+    {/* Copy the movieList and add new movie to it */}
+    <Button
+      onClick = {() => {
+        const updatedMovie = {
+          name: name,
+          poster: poster,
+          rating: rating,
+          summary: summary,
+          trailer: trailer
+        };
+        const copyMovieList = [...movieList];
+        copyMovieList[id] = updatedMovie;
+        setMovieList(copyMovieList);
+        history.push("/movies");
+      } }
+     variant="contained"
+     color = "success"
+     >
+      Save
+      </Button>
+     </div>
+     );
+  }
+  
 
 
 
+function MovieDetails({ movieList }){
+  const { id } = useParams(); // extracting parameter from the URL
+  console.log(id, movieList); 
 
+    const movie = movieList[id];
+    const history = useHistory();
+  return(
+    <div>
+      {/* right click the youtube vedio and give copy embed code  */}
+      <iframe 
+      width="100%" 
+      height="650"
+      src={movie.trailer}
+      title="YouTube video player"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+      allowfullscreen
+      ></iframe>
+    <div className="movie-detail-container">
+      <div className="movie-specs">
+        <h3 className="movie-name">{movie.name}</h3>
+          <p className="movie-rating">⭐{movie.rating} </p>
+      </div>
+    <p className="movie-summary">{movie.summary}</p>
+    <Button 
+      variant="contained"
+      onClick = {() => history.goBack()}
+      // onClick = {() => history.push("/movies")}
+      // onClick = {() => history.goForward()}
+      startIcon={<ArrowBackIosIcon />}
+      >
+       Back
+    </Button>
+    </div>
+   </div>
+  ); 
+  }
 
-
-
-
-
-
-
-
-
-
-
-// export default function App() { 
-
-// const INITIAL_MOVIE_LIST = [
-//   {
-//     name: "RRR",
-//     poster:
-//       "https://englishtribuneimages.blob.core.windows.net/gallary-content/2021/6/Desk/2021_6$largeimg_977224513.JPG",
-//     rating: 8.8,
-//     summary:
-//       "RRR is an upcoming Indian Telugu-language period action drama film directed by S. S. Rajamouli, and produced by D. V. V. Danayya of DVV Entertainments."
-//   },
-//   {
-//     name: "Iron man 2",
-//     poster:
-//       "https://m.media-amazon.com/images/M/MV5BMTM0MDgwNjMyMl5BMl5BanBnXkFtZTcwNTg3NzAzMw@@._V1_FMjpg_UX1000_.jpg",
-//     rating: 7,
-//     summary:
-//       "With the world now aware that he is Iron Man, billionaire inventor Tony Stark (Robert Downey Jr.) faces pressure from all sides to share his technology with the military. He is reluctant to divulge the secrets of his armored suit, fearing the information will fall into the wrong hands. With Pepper Potts (Gwyneth Paltrow) and Rhodes (Don Cheadle) by his side, Tony must forge new alliances and confront a powerful new enemy."
-//   },
-//   {
-//     name: "No Country for Old Men",
-//     poster:
-//       "https://upload.wikimedia.org/wikipedia/en/8/8b/No_Country_for_Old_Men_poster.jpg",
-//     rating: 8.1,
-//     summary:
-//       "A hunter's life takes a drastic turn when he discovers two million dollars while strolling through the aftermath of a drug deal. He is then pursued by a psychopathic killer who wants the money."
-//   },
-//   {
-//     name: "Jai Bhim",
-//     poster:
-//       "https://m.media-amazon.com/images/M/MV5BY2Y5ZWMwZDgtZDQxYy00Mjk0LThhY2YtMmU1MTRmMjVhMjRiXkEyXkFqcGdeQXVyMTI1NDEyNTM5._V1_FMjpg_UX1000_.jpg",
-//     summary:
-//       "A tribal woman and a righteous lawyer battle in court to unravel the mystery around the disappearance of her husband, who was picked up the police on a false case",
-//     rating: 8.8
-//   },
-//   {
-//     name: "The Avengers",
-//     rating: 8,
-//     summary:
-//       "Marvel's The Avengers (classified under the name Marvel Avengers\n Assemble in the United Kingdom and Ireland), or simply The Avengers, is\n a 2012 American superhero film based on the Marvel Comics superhero team\n of the same name.",
-//     poster:
-//       "https://terrigen-cdn-dev.marvel.com/content/prod/1x/avengersendgame_lob_crd_05.jpg"
-//   },
-//   {
-//     name: "Interstellar",
-//     poster: "https://m.media-amazon.com/images/I/A1JVqNMI7UL._SL1500_.jpg",
-//     rating: 8.6,
-//     summary:
-//       "When Earth becomes uninhabitable in the future, a farmer and ex-NASA\n pilot, Joseph Cooper, is tasked to pilot a spacecraft, along with a team\n of researchers, to find a new planet for humans."
-//   },
-//   {
-//     name: "Baahubali",
-//     poster: "https://flxt.tmsimg.com/assets/p11546593_p_v10_af.jpg",
-//     rating: 8,
-//     summary:
-//       "In the kingdom of Mahishmati, Shivudu falls in love with a young warrior woman. While trying to woo her, he learns about the conflict-ridden past of his family and his true legacy."
-//   },
-//   {
-//     name: "Ratatouille",
-//     poster:
-//       "https://resizing.flixster.com/gL_JpWcD7sNHNYSwI1ff069Yyug=/ems.ZW1zLXByZC1hc3NldHMvbW92aWVzLzc4ZmJhZjZiLTEzNWMtNDIwOC1hYzU1LTgwZjE3ZjQzNTdiNy5qcGc=",
-//     rating: 8,
-//     summary:
-//       "Remy, a rat, aspires to become a renowned French chef. However, he fails to realise that people despise rodents and will never enjoy a meal cooked by him."
-//   }
-// ];
-// const [movieList, setMovieList] = useState(INITIAL_MOVIE_LIST);
-
-// const [name, setName] = useState("");
-// const [poster, setPoster] = useState("");
-// const [rating, setRating] = useState("");
-// const [summary, setSummary] = useState("");
-
-// return(
-//   <div className = "App"> 
-//   <div className = "add-movie-form">
-//   <TextField
-//   onChange = {(event) => setName(event.target.value)} 
-//   id="outlined-basic" 
-//   label="Name"
-//    variant="outlined" />
-//        {/* <input
-//         type = "text" 
-//         onChange = {(event) => setName(event.target.value)}
-//         placeholder = "Name"
-//          /> */}
-//        <TextField
-//         label = "Poster" 
-//         // placeholder = "Poster"
-//         onChange = {(event) => setPoster(event.target.value)}
-//         variant="outlined"
-//         />
-//        <TextField 
-//        label = "Rating" 
-//         //placeholder = "Rating" 
-//         onChange = {(event) => setRating(event.target.value)}
-//         variant="outlined"
-//         />
-//        <TextField 
-//        label = "Summary"
-//         // placeholder = "Summary"
-//          onChange = {(event) => setSummary(event.target.value)}
-//          variant="outlined"
-//          />
-//        {/* <button onClick = {() => console.log(name, poster, rating, summary)}>Add Movie</button> */}
-//   <Button
-//     onClick = {() => {
-//       const newMovie = {
-//         name: name,
-//         poster: poster,
-//         rating: rating,
-//         summary: summary,
-//       };
-
-//       setMovieList([...movieList, newMovie])
-//     } }
-       
-//     variant="contained">Add Movie</Button>
-//   </div>
-
-// <div className="movie-list">
-//   {movieList.map(({ name, poster, rating, summary }, index) => 
-//   (
-//     <Movie 
-//     key={index}
-//     name = {name} 
-//     poster={poster} 
-//     rating = {rating} 
-//     summary={summary}
-//     />
-//   ))}
-// </div>
-// {/* <ColorBox />
-// <AddColor /> */}
-// </div>
-// );
-// }
-
-
-// function AddColor() {
-//   const [color, setColor] = useState("pink");
-//   const styles = {
-//     background: color,
-//   };
-// const [colorList, setColorList] = useState(
-//   ["crimson", "Orange", "teal", "yellow"]);
+function MovieList({ movieList, setMovieList }){
+  const history = useHistory();
+  return(
+<div className="movie-list">
+  {movieList.map(({ name, poster, rating, summary }, index) => 
+  (
+    <Movie 
+    key={index}
+    name = {name} 
+    poster={poster} 
+    rating = {rating} 
+    summary={summary}
     
-//   // Todo - Capture - Typing event
-//   return(
-//     <div>
-//       <input 
-//       value = {color}
-//       style={styles}
-//       onChange = {(event) => setColor(event.target.value)}
-//       placeholder = "Enter a color" 
-//       />
-//    <button onClick = {()=> setColorList([...colorList, color])}>
-//      Add Color</button>
+    deleteButton = {
+    <IconButton
+      onClick={() => {
+        console.log(index);
+        const copyMovieList = [...movieList];
+        copyMovieList.splice(index, 1)
+        setMovieList(copyMovieList)
+      }}  
+      aria-label = "delete"
+      color="error"
+      >
+       <DeleteIcon />
+       </IconButton>
+      }
 
-// {colorList.map((clr) => (
-//   <ColorBox color = {clr} />
-// ))}
+      editButton = {
+        <IconButton
+          onClick={() =>history.push(`/movies/edit/${index}`)}  
+          aria-label = "delete"
+          color="secondary"
+          >
+           <EditIcon />
+           </IconButton>
+          }
+          id={index}
+    />
+  ))}
+</div>
+);
+}
 
-//    {/* <ColorBox color = "red" />
-//    <ColorBox color = "Orange" />
-//    <ColorBox color = "teal" /> */}
-//     </div>
-//   );
-// }
 
-// function ColorBox({ color }){
-//   const styles = {
-//     backgroundColor: color,
-//     height: "25px",
-//     width: "200px",
-//     marginTop: "10px",
-//   };
-//   return <div style = {styles}></div>
-// }
+function NotFound(){
+return(
+  <div> 
+    <h1 className="not-found">404</h1>
+    <img
+    width="100%"
+      src="https://cdn.dribbble.com/users/285475/screenshots/2083086/dribbble_1.gif"
+      alt="404 Not found"
+    />
+  </div>
+);
+}
+function AddColor() {
+  const [color, setColor] = useState("pink");
+  const styles = {
+    background: color,
+  };
+const [colorList, setColorList] = useState(
+  ["crimson", "Orange", "teal", "yellow"]);
+    
+  // Todo - Capture - Typing event
+  return(
+    <div>
+      <input 
+      value = {color}
+      style={styles}
+      onChange = {(event) => setColor(event.target.value)}
+      placeholder = "Enter a color" 
+      />
+   <button onClick = {()=> setColorList([...colorList, color])}>
+     Add Color</button>
+
+{colorList.map((clr) => (
+  <ColorBox color = {clr} />
+))}
+
+   {/* <ColorBox color = "red" />
+   <ColorBox color = "Orange" />
+   <ColorBox color = "teal" /> */}
+    </div>
+  );
+}
+
+function ColorBox({ color }){
+  const styles = {
+    backgroundColor: color,
+    height: "25px",
+    width: "200px",
+    marginTop: "10px",
+  };
+  return <div style = {styles}></div>
+}
 
 
 
@@ -506,88 +750,207 @@ function Star(){
 // 2. Warning: Each child in a list should have a unique "key" prop - why?
 
 
-// // Task
-// function Movie({ name, poster, rating, summary }){
-//   // Normal JS
-//   // Conditional styling
-// const styles = {
-//   // backgroundColor: "green",
-//   color: rating > 8.5 ? "green" : "red",
-// };
-// // Inside return only jsx
-// // none -> block (conditional styling)
-// const [show, setShow] = useState(true);
- 
+// Task
+function Movie({ name, poster, rating, summary, deleteButton, id, editButton }){
+  // Normal JS
+  // Conditional styling
+const styles = {
+  // backgroundColor: "green",
+  color: rating > 8.5 ? "green" : "red",
+};
+// Inside return only jsx
+// none -> block (conditional styling)
+const [show, setShow] = useState(true);
+ const history = useHistory();
 // const summaryStyles = {
 //  display: show ? "block" : "none",
 // };
-//   return(
-//     <Card className = "movie-container">
-//         <img src={poster} alt={name} className="movie-poster"  />
-//        <CardContent>
-//         <div className="movie-specs">
-//           <h2 className="movie-name">{name}
+  return(
+    <Card className = "movie-container">
+        <img src={poster} alt={name} className="movie-poster"  />
+       <CardContent>
+        <div className="movie-specs">
+          <h2 className="movie-name">{name}
            
-//         <IconButton
-//          color="primary"
-//          onClick = {() => setShow(!show)}
-//          aria-label="Toggle summary">
-//            {/* conditional rendering */}
-//         {show ? <ExpandLessIcon /> : <ExpandMoreIcon />}
-//         </IconButton>
-//        </h2>
-//        <p style={styles} className="movie-rating">⭐{rating}</p>
-//        </div>
-//         {/* <button onClick = {() => setShow(!show)}>Toggle Description</button> */}
-//         {/* <p style = {summaryStyles} className = "movie-summary">
-//           {summary}</p>     */}
+        <IconButton
+         color="primary"
+         onClick = {() => setShow(!show)}
+         aria-label="Toggle summary">
+           {/* conditional rendering */}
+        {show ? <ExpandLessIcon /> : <ExpandMoreIcon />}
+        </IconButton>
 
-//           {/* conditional rendering */}
-//         {show ? <p className = "movie-summary">{summary}</p> : ""}
-//         </CardContent>
-//         <CardActions>
-//         <Counter />
-//         </CardActions>
-        
-//     </Card>
-//   );
-  
-// }
+        <IconButton
+        color="primary"
+        onClick = {() => history.push(`/movies/${id}`)}
+        aria-label="Toggle summary"
+        >
+          <InfoIcon />
+          </IconButton>
+       </h2>
+       <p style={styles} className="movie-rating">⭐{rating}</p>
+       </div>
+        {/* <button onClick = {() => setShow(!show)}>Toggle Description</button> */}
+        {/* <p style = {summaryStyles} className = "movie-summary">
+          {summary}</p>     */}
 
-// // camel case onClick -> C must be capital
-// // hooks - function - 'use'
-// // useState -> To inform react the value is update
-// // const [state, setState] = useState(Intial value)
-// // state -> current value
-// // setState -> helps to update state
-// function Counter(){
-//   const [like, setLike] = useState(0);
-//   const [disLike, setDisLike] = useState(0);
-//   return(
-//     <div className = "counter-container">
-//       <IconButton 
-//       className="like-dislike"
-//        onClick = {() =>setLike(like + 1)} 
-//        aria-label="like button" 
-//        color = "primary"
-//        >
-//        <Badge badgeContent={like} color="primary"> 
-//        👍
-//        </Badge>
-//        </IconButton>
-//     <IconButton 
-//       className="like-dislike"
-//        onClick = {() =>setDisLike(disLike + 1)} 
-//        aria-label="dislike button" 
-//        color = "error"
-//        >
-//          👎 {disLike}
-//       </IconButton>
-//       {/* <button className="like-dislike" onClick = {() =>setLike(like + 1)} >👍 {like} </button>
-//       <button className="like-dislike" onClick = {() => setDisLike(disLike + 1)}> 👎 {disLike} </button> */}
-//     </div>
-//   );
-// }
+          {/* conditional rendering */}
+        {show ? <p className = "movie-summary">{summary}</p> : ""}
+        </CardContent>
+        <CardActions>
+        <Counter />  {deleteButton} {editButton}
+        </CardActions>
+      </Card>
+  );
+}
+
+function TicTacToe(){
+  const [board,setBoard] = useState([
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null]);
+    
+  useState([0,1,2,3,4,5,6,7,8]);
+
+  const decideWinner = (board) => {
+      const lines = [
+        [0, 1, 2],
+        [3, 4, 5],
+        [6, 7, 8],
+        [0, 3, 6],
+        [1, 4, 7],
+        [2, 5, 8],
+        [0, 4, 8],
+        [2, 4, 6],
+      ];
+   
+// if winning condition present in board then we have a winner
+for (let i=0; i < lines.length; i++){
+  const [a,b,c] = lines[i];
+  // console.log(a,b,c);
+  if(board[a] != null && board[a] == board[b] && board[b] == board[c]){
+    console.log("Winner is", board[a]);
+return board[a]; 
+  }
+}
+return null;
+};
+
+const winner = decideWinner(board);
+
+ const [isXturn, setIsXTurn] = useState(true);
+
+ // copy the board and replace with 'X' in the clicked GameBox
+ // Update only untouched boxes & until no winner
+  const handleClick = (index) => {
+
+    if (winner == null && board[index] == null)
+    {
+    const boardCopy = [...board];
+    console.log(boardCopy, index);
+    boardCopy[index] = isXturn ? "X" : "O";
+    setBoard(boardCopy);
+    setIsXTurn(!isXturn);
+    // console.log(index);
+  }
+};
+
+const { width,height } = useWindowSize();
+
+return (
+<div className="full-game">
+  {/* {winner ? <Confetti width={width} height={height} wind={0.3} /> : ""} */}
+  {winner ? <Confetti width={width} height={height} gravity={0.01} /> : ""}
+  <div className="board">
+    {board.map((val, index) => ( 
+    <GameBox val={val} onPlayerClick = {() => handleClick(index)} />
+    ))}
+
+    {/* <GameBox /> */}
+    </div>
+    {winner ? <h2>Winner is: {winner}</h2> : ""}
+    <button 
+    onClick = {() => {
+      setBoard([null, null, null, null, null, null,null, null,null]);
+      setIsXTurn(true);
+    } }
+    >Restart</button>
+</div>
+);
+}
+
+// Changing val requires hook
+function GameBox({ val, onPlayerClick }) {
+  // const val = "X";
+  //const [val, setVal] = useState(null);
+  const styles = {
+    color:val == "X" ? "green" : "red",
+  };
+  return (<div 
+    // onClick = {() => setVal(val=="X" ? "O": "X")}
+    onClick = {() => onPlayerClick()} 
+    style= {styles} 
+     className="game-box">
+    {val}
+    </div>
+  ); 
+}
+// Important
+//Multi page -Advantage
+// 1. Performance
+// 2. Ease of access - organized
+// 3. Sharing
+
+// SPA
+// 1. No refresh
+// 2. Smooth experience
+
+// React router DOM
+// Conditional Rendering
+
+
+// {} -> template syntax
+// 
+// camel case onClick -> C must be capital
+// hooks - function - 'use'
+// useState -> To inform react the value is update
+// const [state, setState] = useState(Intial value)
+// state -> current value
+// setState -> helps to update state
+function Counter(){
+  const [like, setLike] = useState(0);
+  const [disLike, setDisLike] = useState(0);
+  return(
+    <div className = "counter-container">
+      <IconButton 
+      className="like-dislike"
+       onClick = {() =>setLike(like + 1)} 
+       aria-label="like button" 
+       color = "primary"
+       >
+       <Badge badgeContent={like} color="primary"> 
+       👍
+       </Badge>
+       </IconButton>
+    <IconButton 
+      className="like-dislike"
+       onClick = {() =>setDisLike(disLike + 1)} 
+       aria-label="dislike button" 
+       color = "error"
+       >
+         👎 {disLike}
+      </IconButton>
+      {/* <button className="like-dislike" onClick = {() =>setLike(like + 1)} >👍 {like} </button>
+      <button className="like-dislike" onClick = {() => setDisLike(disLike + 1)}> 👎 {disLike} </button> */}
+    </div>
+  );
+}
 
 
 

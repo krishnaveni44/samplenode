@@ -5,9 +5,11 @@
   background:url(https://images.wallpaperscraft.com/image/single/cinema_chairs_dark_159821_1280x720.jpg) no-repeat;background-attachment:fixed;background-size:cover;
 } */
 
-body{
+/* body{
   background: linear-gradient(to right, #0062E6, #33AEFF);
-}
+} */
+
+
 .star-container{
   display: flex;
   margin: 50px auto 0;
@@ -194,6 +196,46 @@ body{
   flex-direction: column;
   gap: 10px;
   margin: 16px;
+}
+
+.game-box{
+  height:160px;
+  width:160px;
+  /* background-color:white; */
+  border: 2px solid black;
+  font-size:160px;
+  /* center the x */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+body{
+  /* background-color: whitesmoke; */
+}
+
+.board{
+  display: flex;
+  flex-wrap: wrap;
+  width: 492px;
+}
+
+.full-game{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.not-found{
+  text-align: center;
+  font-size: 54px;
+  margin:0;
+}
+
+.movie-detail-container {
+  max-width: 900px;
+  padding: 24px;
 }
 
 .Good{

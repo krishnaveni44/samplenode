@@ -1,16 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter as Router } from "react-router-dom";
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+//import App from "./example";
 
 
+// as -> renaming
+// HashRouter
+// 1. BrowserRouter - Modern browser - Added features
+// 2. HashRouter -Older browser (IE)
 
 
+// Very important
 
 ReactDOM.render(
   <React.StrictMode>
+  <Router>
     <App />
+  </Router>
   </React.StrictMode>,
   document.getElementById('root')
 );
