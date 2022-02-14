@@ -30,7 +30,18 @@ import SendIcon from '@mui/icons-material/Send';
 import Stack from "@mui/material/Stack";
 import EditIcon from "@mui/icons-material/Edit";
 
-
+import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+//import Button from '@mui/material/Button';
+//import IconButton from '@mui/material/IconButton';
+import MenuIcon from '@mui/icons-material/Menu';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+//import Box from '@mui/material/Box';
+import Paper from '@mui/material/Paper';
+import Brightness4Icon from '@mui/icons-material/Brightness4';
+import Brightness7Icon from '@mui/icons-material/Brightness7';
 
 // import { Msg } from "./Msg";
 // //import { Welcome } from "./Welcome.1";
@@ -45,6 +56,7 @@ export default function App() {
 
 const INITIAL_MOVIE_LIST = [
   {
+    id: "100",
     name: "RRR",
     poster:
       "https://englishtribuneimages.blob.core.windows.net/gallary-content/2021/6/Desk/2021_6$largeimg_977224513.JPG",
@@ -54,6 +66,7 @@ const INITIAL_MOVIE_LIST = [
     trailer: "https://www.youtube.com/embed/f_vbAtFSEc0"
   },
   {
+    id: "101",
     name: "Iron man 2",
     poster:
       "https://m.media-amazon.com/images/M/MV5BMTM0MDgwNjMyMl5BMl5BanBnXkFtZTcwNTg3NzAzMw@@._V1_FMjpg_UX1000_.jpg",
@@ -63,6 +76,7 @@ const INITIAL_MOVIE_LIST = [
     trailer: "https://www.youtube.com/embed/wKtcmiifycU"
   },
   {
+    id: "102",
     name: "No Country for Old Men",
     poster:
       "https://upload.wikimedia.org/wikipedia/en/8/8b/No_Country_for_Old_Men_poster.jpg",
@@ -72,6 +86,7 @@ const INITIAL_MOVIE_LIST = [
     trailer: "https://www.youtube.com/embed/38A__WT3-o0"
   },
   {
+    id: "103",
     name: "Jai Bhim",
     poster:
       "https://m.media-amazon.com/images/M/MV5BY2Y5ZWMwZDgtZDQxYy00Mjk0LThhY2YtMmU1MTRmMjVhMjRiXkEyXkFqcGdeQXVyMTI1NDEyNTM5._V1_FMjpg_UX1000_.jpg",
@@ -81,6 +96,7 @@ const INITIAL_MOVIE_LIST = [
     trailer: "https://www.youtube.com/embed/nnXpbTFrqXA"
   },
   {
+    id: "104",
     name: "The Avengers",
     rating: 8,
     summary:
@@ -90,6 +106,7 @@ const INITIAL_MOVIE_LIST = [
     trailer: "https://www.youtube.com/embed/eOrNdBpGMv8"
   },
   {
+    id: "105",
     name: "Interstellar",
     poster: "https://m.media-amazon.com/images/I/A1JVqNMI7UL._SL1500_.jpg",
     rating: 8.6,
@@ -98,6 +115,7 @@ const INITIAL_MOVIE_LIST = [
     trailer: "https://www.youtube.com/embed/zSWdZVtXT7E"
   },
   {
+    id: "106",
     name: "Baahubali",
     poster: "https://flxt.tmsimg.com/assets/p11546593_p_v10_af.jpg",
     rating: 8,
@@ -106,6 +124,7 @@ const INITIAL_MOVIE_LIST = [
     trailer: "https://www.youtube.com/embed/sOEg_YZQsTI"
   },
   {
+    id: "107",
     name: "Ratatouille",
     poster:
       "https://resizing.flixster.com/gL_JpWcD7sNHNYSwI1ff069Yyug=/ems.ZW1zLXByZC1hc3NldHMvbW92aWVzLzc4ZmJhZjZiLTEzNWMtNDIwOC1hYzU1LTgwZjE3ZjQzNTdiNy5qcGc=",
@@ -122,31 +141,63 @@ const [poster, setPoster] = useState("");
 const [rating, setRating] = useState("");
 const [summary, setSummary] = useState("");
 
-return(
-  <div className = "App"> 
-    <ul>
-        <li>
-            {/* change the url bar but don't refresh */}
-            <Link to = "/movies">Movies</Link>
-        </li>
-        <li>
-        <Link to="/color-game">Color game</Link>
-        </li>
-        <li>
-        <Link to="/tic-tac-toe">Tic Tac Toe</Link>
-        </li>
-        <li>
-        <Link to="/movies/add">Add Movies</Link>
-        </li>
-        <li>
-            <Link to ="/">Home</Link>
-        </li>
-    </ul>
+const history = useHistory();
+const [mode,setMode] = useState("light");
+const theme = createTheme({
+  palette: {
+    mode: mode,
+  },
+});
 
+return(
+//   <ul>
+//   <li>
+//       {/* change the url bar but don't refresh */}
+//       <Link to = "/movies">Movies</Link>
+//   </li>
+//   <li>
+//   <Link to="/color-game">Color game</Link>
+//   </li>
+//   <li>
+//   <Link to="/tic-tac-toe">Tic Tac Toe</Link>
+//   </li>
+//   <li>
+//   <Link to="/movies/add">Add Movies</Link>
+//   </li>
+//   <li>
+//       <Link to ="/">Home</Link>
+//   </li>
+// </ul> this will come after app div
+
+
+<ThemeProvider theme={theme}>
+  <Paper style={{ borderRadius: "0px", minHeight: "100vh" }} elevation={4} >
+  <div className = "App"> 
+   
+    <AppBar position="static">
+        <Toolbar>
+         <Button color="inherit" onClick = {() => history.push("/")}>Home</Button>
+         <Button color="inherit" onClick = {() => history.push("/movies")}>Movies</Button>
+         <Button color="inherit" onClick = {() => history.push("/color-game")}>Color Game</Button>
+         <Button color="inherit" onClick = {() => history.push("/tic-tac-toe")}>Tic Tac Toe</Button>
+         <Button color="inherit" onClick = {() => history.push("/movies/add")}>
+           Add Movies</Button>
+           <Button 
+           color="inherit"
+           style = {{ marginLeft: "auto" }}
+            startIcon = {
+              mode === "dark" ? <Brightness7Icon /> : <Brightness4Icon />
+            }
+            onClick = {() =>setMode(mode == "light" ? "dark": "light")}
+            >
+           {mode == "light" ? "dark": "light"} mode
+           </Button>
+        </Toolbar>
+      </AppBar>
 
         {/* A <Switch> looks through all its child elements and renders the first one 
             which matches the current URL. Use a <Switch> you have multiple routers, but you want ...of them to render at a time. */}
-
+<div className = "route-container">
 <Switch>
       <Route exact path="/">
         <Msg />
@@ -180,7 +231,7 @@ return(
     </Route>
 
   </Switch>
-
+  </div>
   {/* <div className = "add-movie-form">
   
   </div> */}
@@ -188,6 +239,8 @@ return(
 {/* <ColorBox />
 <AddColor /> */}
 </div>
+</Paper>
+</ThemeProvider>
 );
 }
 

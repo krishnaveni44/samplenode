@@ -9,7 +9,7 @@
   background: linear-gradient(to right, #0062E6, #33AEFF);
 } */
 
-
+/* 
 .star-container{
   display: flex;
   margin: 50px auto 0;
@@ -89,15 +89,7 @@
   background: #209cee;
   height: 100vh;
   padding: 30px;
-}
-
-
-
-
-
-
-
-
+} */
 
 /* 
 .todo-list {
@@ -198,6 +190,8 @@
   margin: 16px;
 }
 
+
+
 .game-box{
   height:160px;
   width:160px;
@@ -237,6 +231,27 @@ body{
   max-width: 900px;
   padding: 24px;
 }
+
+.route-container {
+  margin: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .Good{
   color:#fff;
