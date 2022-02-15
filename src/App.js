@@ -50,8 +50,6 @@ import Brightness7Icon from '@mui/icons-material/Brightness7';
 //import React from "react";
 
 
-
-
 export default function App() { 
 
 const INITIAL_MOVIE_LIST = [
