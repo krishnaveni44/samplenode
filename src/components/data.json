@@ -1,4 +1,6 @@
-[
+
+{
+"movies": [
   {
     "id": "100",
     "name": "RRR",
@@ -64,3 +66,7 @@
     "trailer": "https://www.youtube.com/embed/NgsQ8mVkN8w"
   }
 ]
+}
+
+
+// https://my-json-server.typicode.com/krishnaveni44/fun-data

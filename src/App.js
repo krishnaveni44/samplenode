@@ -1,17 +1,8 @@
 import { useState } from "react";
-import { useParams } from "react-router-dom";
 import "./App.css";
+//import { useFormik } from "formik";
 
-import IconButton from '@mui/material/IconButton';
-import DeleteIcon from '@mui/icons-material/Delete';
 import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
-import Badge from '@mui/material/Badge';
-import ExpandLessIcon from '@mui/icons-material/ExpandLess';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardActions from '@mui/material/CardActions';
 //import { ColorBox } from "./ColorBox";
 //import { double, Msg } from "./Msg"; 
 import MailIcon from '@mui/icons-material/Mail';
@@ -20,15 +11,10 @@ import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import { Switch, Redirect, Route, Link } from "react-router-dom";
 import { Msg } from "./components/Msg";
 
-import useWindowSize from "react-use/lib/useWindowSize";
-import Confetti from "react-confetti";
 import { NotificationsOffRounded } from "@mui/icons-material";
-import InfoIcon from "@mui/icons-material/Info";
 import { useHistory } from "react-router-dom";
-import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import SendIcon from '@mui/icons-material/Send';
 import Stack from "@mui/material/Stack";
-import EditIcon from "@mui/icons-material/Edit";
 
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -42,12 +28,20 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
+import { MovieDetails } from "./MovieDetails";
+import { MovieList } from "./MovieList";
+import { TicTacToe } from "./TicTacToe";
+import { EditMovie } from "./EditMovie";
+import { NotFound } from "./NotFound";
+import { AddColor } from "./AddColor";
+import { AddMovie } from "./AddMovie";
 
 // import { Msg } from "./Msg";
 // //import { Welcome } from "./Welcome.1";
 // import { Welcome } from "./Welcome"; 
 
 //import React from "react";
+
 
 
 export default function App() { 
@@ -205,7 +199,8 @@ return(
     </Route>
     {  /*Task -  Edit movie   -   /movies/edit/:id */ }
     <Route path="/movies/add">
-        <AddMovie movieList = {movieList} setMovieList={setMovieList} />
+    <AddMovie />
+        {/* <AddMovie movieList = {movieList} setMovieList={setMovieList} /> */}
      </Route>
      {/* :  -> makes id a variable */}
      <Route path = "/movies/edit/:id"> 
@@ -213,10 +208,11 @@ return(
      </Route>
      {/* : -> makes id a variable */}
      <Route path = "/movies/:id">
-        <MovieDetails movieList={movieList} />
+        <MovieDetails />
     </Route>
     <Route path="/movies">
-      <MovieList movieList = {movieList} setMovieList={setMovieList} />
+      {/* <MovieList movieList = {movieList} setMovieList={setMovieList} /> */}
+       <MovieList />     
      </Route>
     <Route path="/color-game">
       <AddColor />
@@ -242,504 +238,17 @@ return(
 );
 }
 
-function AddMovie({ movieList, setMovieList }){
-const [name, setName] = useState("");
-const [poster, setPoster] = useState("");
-const [rating, setRating] = useState("");
-const [summary, setSummary] = useState("");
-const [trailer, setTrailer] = useState("");
-const history = useHistory();
-
-  return (
-  <div className = "add-movie-form">
-    <TextField
-      onChange = {(event) => setName(event.target.value)} 
-      id="outlined-basic" 
-      label="Name"
-      variant="outlined"
-      />
-       {/* <input
-        type = "text" 
-        onChange = {(event) => setName(event.target.value)}
-        placeholder = "Name"
-         /> */}
-      <TextField
-        label = "Poster" 
-        // placeholder = "Poster"
-        onChange = {(event) => setPoster(event.target.value)}
-        variant="outlined"
-        />
-       <TextField 
-       label = "Rating" 
-        //placeholder = "Rating" 
-        onChange = {(event) => setRating(event.target.value)}
-        variant="outlined"
-        />
-       <TextField 
-       label = "Summary"
-        // placeholder = "Summary"
-         onChange = {(event) => setSummary(event.target.value)}
-         variant="outlined"
-         />
-         <TextField 
-        type="text"
-        label = "Trailer"
-          onChange = {(event) => setTrailer(event.target.value)}
-         variant="outlined"
-         />
-     {/* <button onClick = {() => console.log(name, poster, rating, summary)}>Add Movie</button> */}
-  {/* Copy the movieList and add new movie to it */}
-  <Button
-    onClick = {() => {
-      const newMovie = {
-        name: name,
-        poster: poster,
-        rating: rating,
-        summary: summary,
-        trailer: trailer
-      };
-
-      setMovieList([...movieList, newMovie]);
-      history.push("/movies");
-    } }
-   variant="contained"
-   >
-    Add Movie</Button>
-   </div>
-   );
-}
-
-
-function EditMovie({ movieList, setMovieList }){
-  const { id } = useParams();
-  const movie = movieList[id];
-  console.log(movie);
-  
-  const [name, setName] = useState(movie.name);
-  const [poster, setPoster] = useState(movie.poster);
-  const [rating, setRating] = useState(movie.rating);
-  const [summary, setSummary] = useState(movie.summary);
-  const [trailer, setTrailer] = useState(movie.trailer);
-  const history = useHistory();
-  
-    return (
-    <div className = "add-movie-form">
-      <TextField
-        value = {name}
-        onChange = {(event) => setName(event.target.value)} 
-        id="outlined-basic" 
-        label="Name"
-        variant="outlined"
-        />
-         {/* <input
-          type = "text" 
-          onChange = {(event) => setName(event.target.value)}
-          placeholder = "Name"
-           /> */}
-        <TextField
-          value = {poster}
-          label = "Poster" 
-          // placeholder = "Poster"
-          onChange = {(event) => setPoster(event.target.value)}
-          variant="outlined"
-          />
-         <TextField 
-         value = {rating}
-         label = "Rating" 
-          //placeholder = "Rating" 
-          onChange = {(event) => setRating(event.target.value)}
-          variant="outlined"
-          />
-         <TextField 
-         value = {summary}
-         label = "Summary"
-          // placeholder = "Summary"
-           onChange = {(event) => setSummary(event.target.value)}
-           variant="outlined"
-           />
-           <TextField 
-           value = {trailer}
-          type="text"
-          label = "Trailer"
-            onChange = {(event) => setTrailer(event.target.value)}
-           variant="outlined"
-           />
-       {/* <button onClick = {() => console.log(name, poster, rating, summary)}>Add Movie</button> */}
-    {/* Copy the movieList and add new movie to it */}
-    <Button
-      onClick = {() => {
-        const updatedMovie = {
-          name: name,
-          poster: poster,
-          rating: rating,
-          summary: summary,
-          trailer: trailer
-        };
-        const copyMovieList = [...movieList];
-        copyMovieList[id] = updatedMovie;
-        setMovieList(copyMovieList);
-        history.push("/movies");
-      } }
-     variant="contained"
-     color = "success"
-     >
-      Save
-      </Button>
-     </div>
-     );
-  }
-  
 
 
 
-function MovieDetails({ movieList }){
-  const { id } = useParams(); // extracting parameter from the URL
-  console.log(id, movieList); 
 
-    const movie = movieList[id];
-    const history = useHistory();
-  return(
-    <div>
-      {/* right click the youtube vedio and give copy embed code  */}
-      <iframe 
-      width="100%" 
-      height="650"
-      src={movie.trailer}
-      title="YouTube video player"
-      frameborder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-      allowfullscreen
-      ></iframe>
-    <div className="movie-detail-container">
-      <div className="movie-specs">
-        <h3 className="movie-name">{movie.name}</h3>
-          <p className="movie-rating">⭐{movie.rating} </p>
-      </div>
-    <p className="movie-summary">{movie.summary}</p>
-    <Button 
-      variant="contained"
-      onClick = {() => history.goBack()}
-      // onClick = {() => history.push("/movies")}
-      // onClick = {() => history.goForward()}
-      startIcon={<ArrowBackIosIcon />}
-      >
-       Back
-    </Button>
-    </div>
-   </div>
-  ); 
-  }
-
-function MovieList({ movieList, setMovieList }){
-  const history = useHistory();
-  return(
-<div className="movie-list">
-  {movieList.map(({ name, poster, rating, summary }, index) => 
-  (
-    <Movie 
-    key={index}
-    name = {name} 
-    poster={poster} 
-    rating = {rating} 
-    summary={summary}
-    
-    deleteButton = {
-    <IconButton
-      onClick={() => {
-        console.log(index);
-        const copyMovieList = [...movieList];
-        copyMovieList.splice(index, 1)
-        setMovieList(copyMovieList)
-      }}  
-      aria-label = "delete"
-      color="error"
-      >
-       <DeleteIcon />
-       </IconButton>
-      }
-
-      editButton = {
-        <IconButton
-          onClick={() =>history.push(`/movies/edit/${index}`)}  
-          aria-label = "delete"
-          color="secondary"
-          >
-           <EditIcon />
-           </IconButton>
-          }
-          id={index}
-    />
-  ))}
-</div>
-);
-}
-
-
-function NotFound(){
-return(
-  <div> 
-    <h1 className="not-found">404</h1>
-    <img
-    width="100%"
-      src="https://cdn.dribbble.com/users/285475/screenshots/2083086/dribbble_1.gif"
-      alt="404 Not found"
-    />
-  </div>
-);
-}
-function AddColor() {
-  const [color, setColor] = useState("pink");
-  const styles = {
-    background: color,
-  };
-const [colorList, setColorList] = useState(
-  ["crimson", "Orange", "teal", "yellow"]);
-    
-  // Todo - Capture - Typing event
-  return(
-    <div>
-      <input 
-      value = {color}
-      style={styles}
-      onChange = {(event) => setColor(event.target.value)}
-      placeholder = "Enter a color" 
-      />
-   <button onClick = {()=> setColorList([...colorList, color])}>
-     Add Color</button>
-
-{colorList.map((clr) => (
-  <ColorBox color = {clr} />
-))}
-
-   {/* <ColorBox color = "red" />
-   <ColorBox color = "Orange" />
-   <ColorBox color = "teal" /> */}
-    </div>
-  );
-}
-
-function ColorBox({ color }){
-  const styles = {
-    backgroundColor: color,
-    height: "25px",
-    width: "200px",
-    marginTop: "10px",
-  };
-  return <div style = {styles}></div>
-}
-
-
-
-// > 8.5 green
-// <= 8.5 red
-
-// Task
-// 1.New Movie - AddMovie
-// 2. Warning: Each child in a list should have a unique "key" prop - why?
-
-
-// Task
-function Movie({ name, poster, rating, summary, deleteButton, id, editButton }){
-  // Normal JS
-  // Conditional styling
-const styles = {
-  // backgroundColor: "green",
-  color: rating > 8.5 ? "green" : "red",
-};
-// Inside return only jsx
-// none -> block (conditional styling)
-const [show, setShow] = useState(true);
- const history = useHistory();
-// const summaryStyles = {
-//  display: show ? "block" : "none",
-// };
-  return(
-    <Card className = "movie-container">
-        <img src={poster} alt={name} className="movie-poster"  />
-       <CardContent>
-        <div className="movie-specs">
-          <h2 className="movie-name">{name}
-           
-        <IconButton
-         color="primary"
-         onClick = {() => setShow(!show)}
-         aria-label="Toggle summary">
-           {/* conditional rendering */}
-        {show ? <ExpandLessIcon /> : <ExpandMoreIcon />}
-        </IconButton>
-
-        <IconButton
-        color="primary"
-        onClick = {() => history.push(`/movies/${id}`)}
-        aria-label="Toggle summary"
-        >
-          <InfoIcon />
-          </IconButton>
-       </h2>
-       <p style={styles} className="movie-rating">⭐{rating}</p>
-       </div>
-        {/* <button onClick = {() => setShow(!show)}>Toggle Description</button> */}
-        {/* <p style = {summaryStyles} className = "movie-summary">
-          {summary}</p>     */}
-
-          {/* conditional rendering */}
-        {show ? <p className = "movie-summary">{summary}</p> : ""}
-        </CardContent>
-        <CardActions>
-        <Counter />  {deleteButton} {editButton}
-        </CardActions>
-      </Card>
-  );
-}
-
-function TicTacToe(){
-  const [board,setBoard] = useState([
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null]);
-    
-  useState([0,1,2,3,4,5,6,7,8]);
-
-  const decideWinner = (board) => {
-      const lines = [
-        [0, 1, 2],
-        [3, 4, 5],
-        [6, 7, 8],
-        [0, 3, 6],
-        [1, 4, 7],
-        [2, 5, 8],
-        [0, 4, 8],
-        [2, 4, 6],
-      ];
-   
-// if winning condition present in board then we have a winner
-for (let i=0; i < lines.length; i++){
-  const [a,b,c] = lines[i];
-  // console.log(a,b,c);
-  if(board[a] != null && board[a] == board[b] && board[b] == board[c]){
-    console.log("Winner is", board[a]);
-return board[a]; 
-  }
-}
-return null;
-};
-
-const winner = decideWinner(board);
-
- const [isXturn, setIsXTurn] = useState(true);
-
- // copy the board and replace with 'X' in the clicked GameBox
- // Update only untouched boxes & until no winner
-  const handleClick = (index) => {
-
-    if (winner == null && board[index] == null)
-    {
-    const boardCopy = [...board];
-    console.log(boardCopy, index);
-    boardCopy[index] = isXturn ? "X" : "O";
-    setBoard(boardCopy);
-    setIsXTurn(!isXturn);
-    // console.log(index);
-  }
-};
-
-const { width,height } = useWindowSize();
-
-return (
-<div className="full-game">
-  {/* {winner ? <Confetti width={width} height={height} wind={0.3} /> : ""} */}
-  {winner ? <Confetti width={width} height={height} gravity={0.01} /> : ""}
-  <div className="board">
-    {board.map((val, index) => ( 
-    <GameBox val={val} onPlayerClick = {() => handleClick(index)} />
-    ))}
-
-    {/* <GameBox /> */}
-    </div>
-    {winner ? <h2>Winner is: {winner}</h2> : ""}
-    <button 
-    onClick = {() => {
-      setBoard([null, null, null, null, null, null,null, null,null]);
-      setIsXTurn(true);
-    } }
-    >Restart</button>
-</div>
-);
-}
-
-// Changing val requires hook
-function GameBox({ val, onPlayerClick }) {
-  // const val = "X";
-  //const [val, setVal] = useState(null);
-  const styles = {
-    color:val == "X" ? "green" : "red",
-  };
-  return (<div 
-    // onClick = {() => setVal(val=="X" ? "O": "X")}
-    onClick = {() => onPlayerClick()} 
-    style= {styles} 
-     className="game-box">
-    {val}
-    </div>
-  ); 
-}
-// Important
-//Multi page -Advantage
-// 1. Performance
-// 2. Ease of access - organized
-// 3. Sharing
-
-// SPA
-// 1. No refresh
-// 2. Smooth experience
-
-// React router DOM
-// Conditional Rendering
-
-
-// {} -> template syntax
-// 
-// camel case onClick -> C must be capital
-// hooks - function - 'use'
-// useState -> To inform react the value is update
-// const [state, setState] = useState(Intial value)
-// state -> current value
-// setState -> helps to update state
-function Counter(){
-  const [like, setLike] = useState(0);
-  const [disLike, setDisLike] = useState(0);
-  return(
-    <div className = "counter-container">
-      <IconButton 
-      className="like-dislike"
-       onClick = {() =>setLike(like + 1)} 
-       aria-label="like button" 
-       color = "primary"
-       >
-       <Badge badgeContent={like} color="primary"> 
-       👍
-       </Badge>
-       </IconButton>
-    <IconButton 
-      className="like-dislike"
-       onClick = {() =>setDisLike(disLike + 1)} 
-       aria-label="dislike button" 
-       color = "error"
-       >
-         👎 {disLike}
-      </IconButton>
-      {/* <button className="like-dislike" onClick = {() =>setLike(like + 1)} >👍 {like} </button>
-      <button className="like-dislike" onClick = {() => setDisLike(disLike + 1)}> 👎 {disLike} </button> */}
-    </div>
-  );
-}
-
+// function Msg({ name }) {
+//   return (
+//     <div className="come">
+//       <h1>Hello, {name}😀🥗🎄</h1>
+//     </div>
+//   );
+// }
 
 
 
