@@ -22,8 +22,8 @@ export function EditMovie({ movieList, setMovieList }) {
     }) //returns always a promise
 
       // .then((data) => console.log(data)); // Response object
-      .then((data) => data.json())
       // .then((mv) => console.log(mv))
+      .then((data) => data.json())
       .then((mv) => setMovie(mv))
       .catch((err) => console.log(err));
   }, []);
