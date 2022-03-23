@@ -134,7 +134,7 @@ const [rating, setRating] = useState("");
 const [summary, setSummary] = useState("");
 
 const history = useHistory();
-const [mode,setMode] = useState("light");
+const [mode,setMode] = useState("dark");
 const theme = createTheme({
   palette: {
     mode: mode,

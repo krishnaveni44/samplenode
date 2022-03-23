@@ -36,7 +36,7 @@ export function MovieList() {
 
   return (
     <div className="movie-list">
-      {movieList.map(({ name, poster, rating, summary, id }, index) => (
+      {movieList.map(({ name, poster, rating, summary, id, _id }, index) => (
         <Movie
           key={index}
           name={name}
@@ -46,7 +46,7 @@ export function MovieList() {
 
           deleteButton={<IconButton
             style={{ marginLeft: "auto" }}
-            onClick={() => deleteMovie(id)}
+            onClick={() => deleteMovie(_id)}
             // onClick={() => {
             //   console.log(index);
             //   const copyMovieList = [...movieList];
@@ -60,13 +60,13 @@ export function MovieList() {
           </IconButton>}
 
           editButton={<IconButton
-            onClick={() => history.push(`/movies/edit/${index}`)}
+            onClick={() => history.push(`/movies/edit/${_id}`)}
             aria-label="delete"
             color="secondary"
           >
             <EditIcon />
           </IconButton>}
-          id={id} />
+          id={_id} />
       ))}
     </div>
   );
