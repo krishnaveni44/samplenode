@@ -16,8 +16,6 @@ import { Counter } from "./Counter";
 // 2. Warning: Each child in a list should have a unique "key" prop - why?
 // Task
 
-
-
 export function Movie({ name, poster, rating, summary, deleteButton, id, editButton }) {
   // Normal JS
   // Conditional styling
