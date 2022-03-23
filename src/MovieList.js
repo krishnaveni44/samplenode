@@ -17,6 +17,9 @@ export function MovieList() {
   const getMovies = () => {
     fetch(`${API}/movies`, {
       method: "GET",
+      headers: {
+        "x-auth-token" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMzhiMDM4NjAwZDdjYjUyYmRiZTVkMSIsImlhdCI6MTY0ODAxOTUwMH0.Lx5PUM_ngmBTqpsw_vp5is64TC1X53vzTYH-JohPLy0"
+      }
     })
       .then((data) => data.json())
       .then((mvs) => setMovieList(mvs)); // Auto refresh
